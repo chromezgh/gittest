@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Copyright (c) 22/02/2017 The Bitland SW Simon. All rights reserved.
+# Extracting the .tar.xz file for the command called 'Extract Here' by right click has no effect.
+
+echo
+cat << EOF
+*****pelase enter your choise:(1-3)*****
+echo
+1.Extract .tar.xz and rename test_image_<version>
+2.Extract .tar and rename test_image_<version>
+3.Exit
+EOF
+echo
+read -p "Now select the top option to:" input
+read -p "Image version:" Version
+
+File_tar_xz=ChromeOS-test-R49-$Version.0-pbody.tar.xz
+File_tar=ChromeOS-test-R49-$Version.0-pbody.tar
+New_name=chromiumos_test_image_$Version.bin
+
+echo "xz -d <file>"
+xz -d ${file_xz}
+echo "Runnig xz is ok"
+echo 
+
+echo "tar -xf <file>"
+tar -xf ${file_tar}
+echo "Running tar is ok"
+echo 
+
+echo "mv <file> name"
+mv  chromiumos_test_image.bin $New_name
+pwd ; echo "looks Good !!!"
+
+
+
