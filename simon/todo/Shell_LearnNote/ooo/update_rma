@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Copyright (c) 28/02/2017 The Bitland SW Simon. All rights reserved.
+# update all files for RMA
+
+cp main.py run_in.py fatp.py grt.py /usr/local/factory/py/test/test_lists/
+echo "Updated test_lists "
+
+rm /usr/local/factory/py/test/pytests/vpd.py
+cp vpd.py /usr/local/factory/py/test/pytests/
+if [ -e "/usr/local/factory/py/test/pytests/vpd.py" ]; then
+    echo "Updated vpd.py ";
+fi
+rm /usr/local/factory/py/test/rules/branding.py
+cp branding.py /usr/local/factory/py/test/rules/
+if [ -e "/usr/local/factory/py/test/rules/branding.py" ]; then
+    echo "Updated branding.py ";
+fi
+cp serial_number.sh /usr/local/factory/board/
+if [ -e "/usr/local/factory/board/serial_number.sh" ]; then
+    echo "Updated serial_number.sh ";
+fi
+chmod 755 /usr/local/factory/board/serial_number.sh
+
+echo "ok "
+factory_restart

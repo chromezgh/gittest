@@ -1,0 +1,69 @@
+simon@simon-ThinkPad-E460:~/Documents/Birch_PVT/8182.67/ChromeOS-factory-R52-8182.67.0-hana/factory_setup$ ./edit_lsb_factory.sh -i ../../factory_shim/chromeos_8182.67.0_hana_factory_dev-channel_mp-v2.bin 
+[sudo] password for simon: 
+
+Contents of current /dev_image/etc/lsb-factory:
+----------------------------------------------------------------------
+CHROMEOS_AUSERVER=http://build19-m2.golo.chromium.org:8080/update
+CHROMEOS_DEVSERVER=http://build19-m2.golo.chromium.org:8080/update
+FACTORY_INSTALL=1
+HTTP_SERVER_OVERRIDE=true
+# Change the below value to true to enable board prompt
+USER_SELECT=false
+CUTOFF_METHOD=battery_cutoff_at_shutdown
+CUTOFF_AC_STATE=remove_ac
+CUTOFF_BATTERY_MIN_PERCENTAGE=70
+CUTOFF_BATTERY_MAX_PERCENTAGE=80
+----------------------------------------------------------------------
+(1) Modify mini-Omaha server host.
+(2) Enable/disable board prompt on download.
+(3) Enable/disable RELEASE-ONLY recovery download mode.
+(4) Modify cutoff method after factory reset.
+(w) Write settings and exit.
+(q) Quit without saving.
+
+Please select an option: 4
+Select cutoff method after factory reset: 
+(1) shutdown
+(2) reboot
+(3) battery cutoff
+(4) battery cutoff at shutdown
+
+Please select an option: 4
+Select cutoff AC state:
+(1) disconnect AC
+(2) connect AC
+
+Please select an option:1
+Minimum allowed battery percentage: (Keep empty to bypass checking):60
+Maximum allowed battery percentage: (Keep empty to bypass checking):80
+Minimum allowed battery voltage(mA): (Keep empty to bypass checking):
+Maximum allowed battery voltage(mA): (Keep empty to bypass checking):
+
+Shopfloor URL (Keep empty if no need to inform shopfloor after reset):
+Default XML-RPC request will be sent via HTTP/POST with method
+'FinalizeFQC' and SN as the parameter.
+
+
+Contents of current /dev_image/etc/lsb-factory:
+----------------------------------------------------------------------
+CHROMEOS_AUSERVER=http://build19-m2.golo.chromium.org:8080/update
+CHROMEOS_DEVSERVER=http://build19-m2.golo.chromium.org:8080/update
+FACTORY_INSTALL=1
+HTTP_SERVER_OVERRIDE=true
+# Change the below value to true to enable board prompt
+USER_SELECT=false
+CUTOFF_METHOD=battery_cutoff_at_shutdown
+CUTOFF_AC_STATE=remove_ac
+CUTOFF_BATTERY_MIN_PERCENTAGE=60
+CUTOFF_BATTERY_MAX_PERCENTAGE=80
+----------------------------------------------------------------------
+(1) Modify mini-Omaha server host.
+(2) Enable/disable board prompt on download.
+(3) Enable/disable RELEASE-ONLY recovery download mode.
+(4) Modify cutoff method after factory reset.
+(w) Write settings and exit.
+(q) Quit without saving.
+
+Please select an option: w
+INFO: Successfully Modified /home/simon/Documents/Birch_PVT/8182.67/factory_shim/chromeos_8182.67.0_hana_factory_dev-channel_mp-v2.bin
+

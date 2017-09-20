@@ -1,0 +1,23 @@
+#!/usr/bin/expect
+# connected DUT then wait to operate
+# usage ssh_to_dut <DUT_IP>
+
+if {$argc > 4} {
+    send_user "Usage: parth/to/ssh1 <user> <password> <DUT_IP> <cmd>"
+    exit 1
+}
+
+set user [lindex $argv 0]
+set password [lindex $argv 1]
+set DUT_IP [lindex $argv 2]
+set cmd [lindex $argv 3]
+set time 10
+
+spawn ssh $user@$DUT_IP "$cmd"
+expect "assword:" {send "$password\r"}
+interact
+#expect eof
+
+
+
+

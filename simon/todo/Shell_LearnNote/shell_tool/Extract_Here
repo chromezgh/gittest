@@ -1,0 +1,70 @@
+#!/bin/sh
+
+# Copyright (c) 22/02/2017 The Bitland SW Simon. All rights reserved.
+# Extracting the .tar.xz file for the command called 'Extract Here' by right click has no effect.
+# should cp this shell script in target directory
+clear
+echo
+cat << EOF
+*****pelase enter your choise:(1-3)*****
+echo
+1.Extract .tar.xz and rename test_image_<version>
+2.Extract .tar and rename test_image_<version>
+3.Exit
+EOF
+echo
+read -p "Now select the top option to: " Input
+read -p "Image version: " Version
+
+Path=`pwd`/
+File_tar_xz=ChromeOS-test-R49-${Version}.0-pbody.tar.xz
+File_tar=ChromeOS-test-R49-${Version}.0-pbody.tar
+New_name=chromiumos_test_image_${Version}.bin
+
+
+case $Input in
+  1) 
+    if [ -e "${Path}${File_tar_xz}" ]; then         
+		echo "#####Extract ${Version}.tar.xz and rename #####"
+		echo "Runnig Command: xz -d ${Path}${File_tar_xz}"
+		xz -d ${Path}${File_tar_xz}
+		echo "xz ===================================================="
+		
+		echo "Running Command :tar -xf ${Path}${File_tar}"
+		tar -xf ${Path}${File_tar}
+		echo "tar ==================================================="
+
+		echo "Running Conmand: mv chromiumos_test_image.bin $New_name"
+		mv  chromiumos_test_image.bin $New_name
+    else
+	    echo "${Path} not include ${File_tar_xz} !!!";		
+	fi
+	
+	if [ -e "${Path}${New_name}" ]; then
+		echo "Extract to ${Path}${New_name} .";
+	    echo "looks Good !!!"
+	else
+	    echo "### Extract Here Failed ! ###";
+	fi
+	;;
+  2)
+    if [ -e "${Path}${File_tar}" ]; then 
+	    echo "#####Extract ${Version}.tar and rename #####"
+		echo "Running Command: tar -xf ${Path}${File_tar}"
+		tar -xf ${Path}${File_tar}
+		echo "tar ==================================================="
+
+		echo "Running Conmand: mv chromiumos_test_image.bin $New_name"
+		mv  chromiumos_test_image.bin $New_name
+	else 
+	    echo "Directory ${Path} not include ${File_tar}!!!";
+    fi
+	
+	if [ -e "${Path}${New_name}" ]; then
+		echo "Extract to ${Path}${New_name} ."; 
+	    echo "looks Good !!!"
+	else
+	    echo "### Extract Here Failed ! ###";
+	fi
+	;;
+esac

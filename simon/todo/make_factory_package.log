@@ -1,0 +1,3784 @@
+simon@simon-ChromeDevelop:~/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup$ bash -x make_factory_package.sh --board hana --release ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin --factory ../../chromiumos_birch_mp_test_image.bin --hwid_updater ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh --diskimg flash.bin --sectors 61071360
++++ readlink -f make_factory_package.sh
+++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/make_factory_package.sh
++ . /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/factory_common.sh
++++ readlink -f make_factory_package.sh
+++ SCRIPT=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/make_factory_package.sh
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/make_factory_package.sh
+++ SCRIPT_DIR=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup
+++ . /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/lib/shflags
++++ '[' -n '' ']'
++++ FLAGS_VERSION=1.0.3
++++ FLAGS_TRUE=0
++++ FLAGS_FALSE=1
++++ FLAGS_ERROR=2
++++ FLAGS_RESERVED='ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION'
++++ '[' -n '' ']'
++++ __FLAGS_GETOPT_VERS_STD=0
++++ __FLAGS_GETOPT_VERS_ENH=1
++++ __FLAGS_GETOPT_VERS_BSD=2
++++ getopt
++++ case $? in
+++++ getopt --version
++++ '[' 'getopt from util-linux 2.27.1' = '-- ' ']'
++++ __FLAGS_GETOPT_VERS=1
++++ __FLAGS_OPTSTR_SHORT=0
++++ __FLAGS_OPTSTR_LONG=1
++++ __FLAGS_NULL='~'
++++ __FLAGS_INFO_DEFAULT=default
++++ __FLAGS_INFO_HELP=help
++++ __FLAGS_INFO_SHORT=short
++++ __FLAGS_INFO_TYPE=type
++++ __FLAGS_LEN_SHORT=0
++++ __FLAGS_LEN_LONG=1
++++ __FLAGS_TYPE_NONE=0
++++ __FLAGS_TYPE_BOOLEAN=1
++++ __FLAGS_TYPE_FLOAT=2
++++ __FLAGS_TYPE_INTEGER=3
++++ __FLAGS_TYPE_STRING=4
+++++ set
+++++ awk -F= '/^FLAGS_/ || /^__FLAGS_/ {print $1}'
++++ __flags_constants='FLAGS_ERROR
+FLAGS_FALSE
+FLAGS_RESERVED
+FLAGS_TRUE
+FLAGS_VERSION
+__FLAGS_GETOPT_VERS
+__FLAGS_GETOPT_VERS_BSD
+__FLAGS_GETOPT_VERS_ENH
+__FLAGS_GETOPT_VERS_STD
+__FLAGS_INFO_DEFAULT
+__FLAGS_INFO_HELP
+__FLAGS_INFO_SHORT
+__FLAGS_INFO_TYPE
+__FLAGS_LEN_LONG
+__FLAGS_LEN_SHORT
+__FLAGS_NULL
+__FLAGS_OPTSTR_LONG
+__FLAGS_OPTSTR_SHORT
+__FLAGS_TYPE_BOOLEAN
+__FLAGS_TYPE_FLOAT
+__FLAGS_TYPE_INTEGER
+__FLAGS_TYPE_NONE
+__FLAGS_TYPE_STRING'
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly FLAGS_ERROR
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly FLAGS_FALSE
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly FLAGS_RESERVED
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly FLAGS_TRUE
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly FLAGS_VERSION
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_GETOPT_VERS
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_GETOPT_VERS_BSD
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_GETOPT_VERS_ENH
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_GETOPT_VERS_STD
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_INFO_DEFAULT
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_INFO_HELP
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_INFO_SHORT
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_INFO_TYPE
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_LEN_LONG
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_LEN_SHORT
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_NULL
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_OPTSTR_LONG
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_OPTSTR_SHORT
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_TYPE_BOOLEAN
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_TYPE_FLOAT
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_TYPE_INTEGER
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_TYPE_NONE
++++ for __flags_const in '${__flags_constants}'
++++ case ${__flags_const} in
++++ '[' -z '' ']'
++++ readonly __FLAGS_TYPE_STRING
++++ unset __flags_const __flags_constants
++++ __flags_boolNames=' '
++++ __flags_longNames=' '
++++ __flags_shortNames=' '
++++ __flags_columns=
++++ __flags_opts=
+++ . /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/lib/cros_image_common.sh
++++ IMAGE_CGPT_START_SIZE=34
++++ IMAGE_CGPT_END_SIZE=33
++++ IMAGE_CGPT_BS=512
++++ IMAGE_PARTITION_SECTOR_ALIGNMENT=256
++++ _IMAGE_TEMP_OBJECTS=
+++ . /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/lib/compress_cros_image.sh
+++ . /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/lib/chromeos-common.sh
++++ PARTITION_NUM_STATE=1
++++ PARTITION_NUM_KERN_A=2
++++ PARTITION_NUM_ROOT_A=3
++++ PARTITION_NUM_KERN_B=4
++++ PARTITION_NUM_ROOT_B=5
++++ PARTITION_NUM_KERN_C=6
++++ PARTITION_NUM_ROOT_C=7
++++ PARTITION_NUM_OEM=8
++++ PARTITION_NUM_RWFW=11
++++ PARTITION_NUM_EFI_SYSTEM=12
++++ GPT=
+++ image_find_tool cgpt /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin
+++ local tool=cgpt
++++ readlink -f /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin
+++ local alternative_folder=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin
+++ image_has_command cgpt
+++ type cgpt
+++ '[' -x /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin/cgpt ']'
+++ PATH=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin:/home/simon/depot_tools:/home/simon/bin:/home/simon/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ export PATH
+++ image_find_tool cgpt /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/lib
+++ local tool=cgpt
++++ readlink -f /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/lib
+++ local alternative_folder=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/lib
+++ image_has_command cgpt
+++ type cgpt
++ setup_cros_sdk_environment
++ local crosutils_path=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/../../../scripts
++ '[' -f /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/../../../scripts/.default_board ']'
++ INSIDE_CHROOT=0
++ '[' -e /etc/debian_chroot ']'
++ FLAGS_NONE=none
++ DEFINE_string board '' 'Board for which the image was built'
++ _flags_define 4 board '' 'Board for which the image was built'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=board
++ _flags_default_=
++ _flags_help_='Board for which the image was built'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' board '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList board
++ _flags_str_=board
++ shift
++ echo '  '
++ grep ' board '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_board='\'''\'''
+++ FLAGS_board=
++ eval __flags_board_type=4
+++ __flags_board_type=4
++ eval '__flags_board_default=""'
+++ __flags_board_default=
++ eval '__flags_board_help="Board for which the image was built"'
+++ __flags_board_help='Board for which the image was built'
++ eval '__flags_board_short='\''~'\'''
+++ __flags_board_short='~'
++ __flags_longNames=' board '
++ __flags_shortNames=' ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string factory '' 'Directory and file containing factory image: /path/chromiumos_test_image.bin or '\'''\'' to prevent running factroy test.'
++ _flags_define 4 factory '' 'Directory and file containing factory image: /path/chromiumos_test_image.bin or '\'''\'' to prevent running factroy test.'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=factory
++ _flags_default_=
++ _flags_help_='Directory and file containing factory image: /path/chromiumos_test_image.bin or '\'''\'' to prevent running factroy test.'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' factory '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList factory board
++ _flags_str_=factory
++ shift
++ echo ' board '
++ grep ' factory '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_factory='\'''\'''
+++ FLAGS_factory=
++ eval __flags_factory_type=4
+++ __flags_factory_type=4
++ eval '__flags_factory_default=""'
+++ __flags_factory_default=
++ eval '__flags_factory_help="Directory and file containing factory image: /path/chromiumos_test_image.bin or '\'''\'' to prevent running factroy test."'
+++ __flags_factory_help='Directory and file containing factory image: /path/chromiumos_test_image.bin or '\'''\'' to prevent running factroy test.'
++ eval '__flags_factory_short='\''~'\'''
+++ __flags_factory_short='~'
++ __flags_longNames=' board factory '
++ __flags_shortNames=' ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string firmware_updater '' 'Firmware updater (shellball) into the server configuration, or leave empty (default) for the updater in release image (--release),  or '\''none'\'' to prevent running firmware updater.'
++ _flags_define 4 firmware_updater '' 'Firmware updater (shellball) into the server configuration, or leave empty (default) for the updater in release image (--release),  or '\''none'\'' to prevent running firmware updater.'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=firmware_updater
++ _flags_default_=
++ _flags_help_='Firmware updater (shellball) into the server configuration, or leave empty (default) for the updater in release image (--release),  or '\''none'\'' to prevent running firmware updater.'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' firmware_updater '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList firmware_updater board factory
++ _flags_str_=firmware_updater
++ shift
++ echo ' board factory '
++ grep ' firmware_updater '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_firmware_updater='\'''\'''
+++ FLAGS_firmware_updater=
++ eval __flags_firmware_updater_type=4
+++ __flags_firmware_updater_type=4
++ eval '__flags_firmware_updater_default=""'
+++ __flags_firmware_updater_default=
++ eval '__flags_firmware_updater_help="Firmware updater (shellball) into the server configuration, or leave empty (default) for the updater in release image (--release),  or '\''none'\'' to prevent running firmware updater."'
+++ __flags_firmware_updater_help='Firmware updater (shellball) into the server configuration, or leave empty (default) for the updater in release image (--release),  or '\''none'\'' to prevent running firmware updater.'
++ eval '__flags_firmware_updater_short='\''~'\'''
+++ __flags_firmware_updater_short='~'
++ __flags_longNames=' board factory firmware_updater '
++ __flags_shortNames=' ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string hwid_updater '' 'The component list updater for HWID validation, or '\''none'\'' to prevent updating the component list files.'
++ _flags_define 4 hwid_updater '' 'The component list updater for HWID validation, or '\''none'\'' to prevent updating the component list files.'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=hwid_updater
++ _flags_default_=
++ _flags_help_='The component list updater for HWID validation, or '\''none'\'' to prevent updating the component list files.'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' hwid_updater '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList hwid_updater board factory firmware_updater
++ _flags_str_=hwid_updater
++ shift
++ echo ' board factory firmware_updater '
++ grep ' hwid_updater '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_hwid_updater='\'''\'''
+++ FLAGS_hwid_updater=
++ eval __flags_hwid_updater_type=4
+++ __flags_hwid_updater_type=4
++ eval '__flags_hwid_updater_default=""'
+++ __flags_hwid_updater_default=
++ eval '__flags_hwid_updater_help="The component list updater for HWID validation, or '\''none'\'' to prevent updating the component list files."'
+++ __flags_hwid_updater_help='The component list updater for HWID validation, or '\''none'\'' to prevent updating the component list files.'
++ eval '__flags_hwid_updater_short='\''~'\'''
+++ __flags_hwid_updater_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater '
++ __flags_shortNames=' ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string complete_script '' 'If set, include the script for the last-step execution of factory install'
++ _flags_define 4 complete_script '' 'If set, include the script for the last-step execution of factory install'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=complete_script
++ _flags_default_=
++ _flags_help_='If set, include the script for the last-step execution of factory install'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' complete_script '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList complete_script board factory firmware_updater hwid_updater
++ _flags_str_=complete_script
++ shift
++ echo ' board factory firmware_updater hwid_updater '
++ grep ' complete_script '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_complete_script='\'''\'''
+++ FLAGS_complete_script=
++ eval __flags_complete_script_type=4
+++ __flags_complete_script_type=4
++ eval '__flags_complete_script_default=""'
+++ __flags_complete_script_default=
++ eval '__flags_complete_script_help="If set, include the script for the last-step execution of factory install"'
+++ __flags_complete_script_help='If set, include the script for the last-step execution of factory install'
++ eval '__flags_complete_script_short='\''~'\'''
+++ __flags_complete_script_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script '
++ __flags_shortNames=' ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string release '' 'Directory and file containing release image: /path/chromiumos_image.bin'
++ _flags_define 4 release '' 'Directory and file containing release image: /path/chromiumos_image.bin'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=release
++ _flags_default_=
++ _flags_help_='Directory and file containing release image: /path/chromiumos_image.bin'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' release '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList release board factory firmware_updater hwid_updater complete_script
++ _flags_str_=release
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script '
++ grep ' release '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_release='\'''\'''
+++ FLAGS_release=
++ eval __flags_release_type=4
+++ __flags_release_type=4
++ eval '__flags_release_default=""'
+++ __flags_release_default=
++ eval '__flags_release_help="Directory and file containing release image: /path/chromiumos_image.bin"'
+++ __flags_release_help='Directory and file containing release image: /path/chromiumos_image.bin'
++ eval '__flags_release_short='\''~'\'''
+++ __flags_release_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string omaha_data_dir '' 'Directory to place all generated data'
++ _flags_define 4 omaha_data_dir '' 'Directory to place all generated data'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=omaha_data_dir
++ _flags_default_=
++ _flags_help_='Directory to place all generated data'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' omaha_data_dir '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList omaha_data_dir board factory firmware_updater hwid_updater complete_script release
++ _flags_str_=omaha_data_dir
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release '
++ grep ' omaha_data_dir '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_omaha_data_dir='\'''\'''
+++ FLAGS_omaha_data_dir=
++ eval __flags_omaha_data_dir_type=4
+++ __flags_omaha_data_dir_type=4
++ eval '__flags_omaha_data_dir_default=""'
+++ __flags_omaha_data_dir_default=
++ eval '__flags_omaha_data_dir_help="Directory to place all generated data"'
+++ __flags_omaha_data_dir_help='Directory to place all generated data'
++ eval '__flags_omaha_data_dir_short='\''~'\'''
+++ __flags_omaha_data_dir_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string subfolder '' 'If set, the name of the subfolder to put the payload items inside'
++ _flags_define 4 subfolder '' 'If set, the name of the subfolder to put the payload items inside'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=subfolder
++ _flags_default_=
++ _flags_help_='If set, the name of the subfolder to put the payload items inside'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' subfolder '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList subfolder board factory firmware_updater hwid_updater complete_script release omaha_data_dir
++ _flags_str_=subfolder
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir '
++ grep ' subfolder '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_subfolder='\'''\'''
+++ FLAGS_subfolder=
++ eval __flags_subfolder_type=4
+++ __flags_subfolder_type=4
++ eval '__flags_subfolder_default=""'
+++ __flags_subfolder_default=
++ eval '__flags_subfolder_help="If set, the name of the subfolder to put the payload items inside"'
+++ __flags_subfolder_help='If set, the name of the subfolder to put the payload items inside'
++ eval '__flags_subfolder_short='\''~'\'''
+++ __flags_subfolder_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string usbimg '' 'If set, the name of the USB installation disk image file to output'
++ _flags_define 4 usbimg '' 'If set, the name of the USB installation disk image file to output'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=usbimg
++ _flags_default_=
++ _flags_help_='If set, the name of the USB installation disk image file to output'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' usbimg '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList usbimg board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder
++ _flags_str_=usbimg
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder '
++ grep ' usbimg '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_usbimg='\'''\'''
+++ FLAGS_usbimg=
++ eval __flags_usbimg_type=4
+++ __flags_usbimg_type=4
++ eval '__flags_usbimg_default=""'
+++ __flags_usbimg_default=
++ eval '__flags_usbimg_help="If set, the name of the USB installation disk image file to output"'
+++ __flags_usbimg_help='If set, the name of the USB installation disk image file to output'
++ eval '__flags_usbimg_short='\''~'\'''
+++ __flags_usbimg_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string install_shim '' 'Directory and file containing factory install shim for --usbimg'
++ _flags_define 4 install_shim '' 'Directory and file containing factory install shim for --usbimg'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=install_shim
++ _flags_default_=
++ _flags_help_='Directory and file containing factory install shim for --usbimg'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' install_shim '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList install_shim board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg
++ _flags_str_=install_shim
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg '
++ grep ' install_shim '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_install_shim='\'''\'''
+++ FLAGS_install_shim=
++ eval __flags_install_shim_type=4
+++ __flags_install_shim_type=4
++ eval '__flags_install_shim_default=""'
+++ __flags_install_shim_default=
++ eval '__flags_install_shim_help="Directory and file containing factory install shim for --usbimg"'
+++ __flags_install_shim_help='Directory and file containing factory install shim for --usbimg'
++ eval '__flags_install_shim_short='\''~'\'''
+++ __flags_install_shim_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string diskimg '' 'If set, the name of the diskimage file to output'
++ _flags_define 4 diskimg '' 'If set, the name of the diskimage file to output'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=diskimg
++ _flags_default_=
++ _flags_help_='If set, the name of the diskimage file to output'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' diskimg '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList diskimg board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim
++ _flags_str_=diskimg
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim '
++ grep ' diskimg '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_diskimg='\'''\'''
+++ FLAGS_diskimg=
++ eval __flags_diskimg_type=4
+++ __flags_diskimg_type=4
++ eval '__flags_diskimg_default=""'
+++ __flags_diskimg_default=
++ eval '__flags_diskimg_help="If set, the name of the diskimage file to output"'
+++ __flags_diskimg_help='If set, the name of the diskimage file to output'
++ eval '__flags_diskimg_short='\''~'\'''
+++ __flags_diskimg_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_boolean preserve 1 'If set, reuse the diskimage file, if available'
++ _flags_define 1 preserve 1 'If set, reuse the diskimage file, if available'
++ '[' 4 -lt 4 ']'
++ _flags_type_=1
++ _flags_name_=preserve
++ _flags_default_=1
++ _flags_help_='If set, reuse the diskimage file, if available'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' preserve '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList preserve board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg
++ _flags_str_=preserve
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg '
++ grep ' preserve '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ _flags_validateBoolean 1
++ _flags_bool_=1
++ flags_return=0
++ case "${_flags_bool_}" in
++ unset _flags_bool_
++ return 0
++ case ${_flags_default_} in
++ _flags_default_=1
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_preserve='\''1'\'''
+++ FLAGS_preserve=1
++ eval __flags_preserve_type=1
+++ __flags_preserve_type=1
++ eval '__flags_preserve_default="1"'
+++ __flags_preserve_default=1
++ eval '__flags_preserve_help="If set, reuse the diskimage file, if available"'
+++ __flags_preserve_help='If set, reuse the diskimage file, if available'
++ eval '__flags_preserve_short='\''~'\'''
+++ __flags_preserve_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 1 -eq 1 ']'
++ __flags_boolNames=' nopreserve '
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_integer sectors 31277232 'Size of image in sectors'
++ _flags_define 3 sectors 31277232 'Size of image in sectors'
++ '[' 4 -lt 4 ']'
++ _flags_type_=3
++ _flags_name_=sectors
++ _flags_default_=31277232
++ _flags_help_='Size of image in sectors'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' sectors '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList sectors board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve nopreserve
++ _flags_str_=sectors
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve nopreserve '
++ grep ' sectors '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ _flags_validateInteger 31277232
++ _flags_int_=31277232
++ flags_return=0
++ case ${_flags_int_} in
+++ expr 31277232 : '\([0-9][0-9]*\)'
++ _flags_test_=31277232
++ '[' 31277232 '!=' 31277232 ']'
++ unset _flags_int_ _flags_test_
++ return 0
++ :
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_sectors='\''31277232'\'''
+++ FLAGS_sectors=31277232
++ eval __flags_sectors_type=3
+++ __flags_sectors_type=3
++ eval '__flags_sectors_default="31277232"'
+++ __flags_sectors_default=31277232
++ eval '__flags_sectors_help="Size of image in sectors"'
+++ __flags_sectors_help='Size of image in sectors'
++ eval '__flags_sectors_short='\''~'\'''
+++ __flags_sectors_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 3 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_boolean detect_release_image 0 'If set, try to auto-detect the type of release image and convert if required'
++ _flags_define 1 detect_release_image 0 'If set, try to auto-detect the type of release image and convert if required'
++ '[' 4 -lt 4 ']'
++ _flags_type_=1
++ _flags_name_=detect_release_image
++ _flags_default_=0
++ _flags_help_='If set, try to auto-detect the type of release image and convert if required'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' detect_release_image '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList detect_release_image board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors nopreserve
++ _flags_str_=detect_release_image
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors nopreserve '
++ grep ' detect_release_image '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ _flags_validateBoolean 0
++ _flags_bool_=0
++ flags_return=0
++ case "${_flags_bool_}" in
++ unset _flags_bool_
++ return 0
++ case ${_flags_default_} in
++ _flags_default_=0
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_detect_release_image='\''0'\'''
+++ FLAGS_detect_release_image=0
++ eval __flags_detect_release_image_type=1
+++ __flags_detect_release_image_type=1
++ eval '__flags_detect_release_image_default="0"'
+++ __flags_detect_release_image_default=0
++ eval '__flags_detect_release_image_help="If set, try to auto-detect the type of release image and convert if required"'
+++ __flags_detect_release_image_help='If set, try to auto-detect the type of release image and convert if required'
++ eval '__flags_detect_release_image_short='\''~'\'''
+++ __flags_detect_release_image_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 1 -eq 1 ']'
++ __flags_boolNames=' nopreserve nodetect_release_image '
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string config '' 'Configuration file where parameters are read from.  You can use \$MFP_CONFIG_PATH and \$MFP_CONFIG_DIR (path and directory to the config file itself) in config file to use relative path'
++ _flags_define 4 config '' 'Configuration file where parameters are read from.  You can use \$MFP_CONFIG_PATH and \$MFP_CONFIG_DIR (path and directory to the config file itself) in config file to use relative path'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=config
++ _flags_default_=
++ _flags_help_='Configuration file where parameters are read from.  You can use \$MFP_CONFIG_PATH and \$MFP_CONFIG_DIR (path and directory to the config file itself) in config file to use relative path'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' config '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList config board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image nopreserve nodetect_release_image
++ _flags_str_=config
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image nopreserve nodetect_release_image '
++ grep ' config '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_config='\'''\'''
+++ FLAGS_config=
++ eval __flags_config_type=4
+++ __flags_config_type=4
++ eval '__flags_config_default=""'
+++ __flags_config_default=
++ eval '__flags_config_help="Configuration file where parameters are read from.  You can use \$MFP_CONFIG_PATH and \$MFP_CONFIG_DIR (path and directory to the config file itself) in config file to use relative path"'
+++ __flags_config_help='Configuration file where parameters are read from.  You can use $MFP_CONFIG_PATH and $MFP_CONFIG_DIR (path and directory to the config file itself) in config file to use relative path'
++ eval '__flags_config_short='\''~'\'''
+++ __flags_config_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_boolean run_omaha 1 'Run mini-omaha server after factory package setup completed.'
++ _flags_define 1 run_omaha 1 'Run mini-omaha server after factory package setup completed.'
++ '[' 4 -lt 4 ']'
++ _flags_type_=1
++ _flags_name_=run_omaha
++ _flags_default_=1
++ _flags_help_='Run mini-omaha server after factory package setup completed.'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' run_omaha '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList run_omaha board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config nopreserve nodetect_release_image
++ _flags_str_=run_omaha
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config nopreserve nodetect_release_image '
++ grep ' run_omaha '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ _flags_validateBoolean 1
++ _flags_bool_=1
++ flags_return=0
++ case "${_flags_bool_}" in
++ unset _flags_bool_
++ return 0
++ case ${_flags_default_} in
++ _flags_default_=1
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_run_omaha='\''1'\'''
+++ FLAGS_run_omaha=1
++ eval __flags_run_omaha_type=1
+++ __flags_run_omaha_type=1
++ eval '__flags_run_omaha_default="1"'
+++ __flags_run_omaha_default=1
++ eval '__flags_run_omaha_help="Run mini-omaha server after factory package setup completed."'
+++ __flags_run_omaha_help='Run mini-omaha server after factory package setup completed.'
++ eval '__flags_run_omaha_short='\''~'\'''
+++ __flags_run_omaha_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 1 -eq 1 ']'
++ __flags_boolNames=' nopreserve nodetect_release_image norun_omaha '
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string test '' 'If set, path to a test image to use to create a factory test image. Must be used with --factory_toolkit. Mutually exclusive with --factory.'
++ _flags_define 4 test '' 'If set, path to a test image to use to create a factory test image. Must be used with --factory_toolkit. Mutually exclusive with --factory.'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=test
++ _flags_default_=
++ _flags_help_='If set, path to a test image to use to create a factory test image. Must be used with --factory_toolkit. Mutually exclusive with --factory.'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' test '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList test board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha nopreserve nodetect_release_image norun_omaha
++ _flags_str_=test
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha nopreserve nodetect_release_image norun_omaha '
++ grep ' test '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_test='\'''\'''
+++ FLAGS_test=
++ eval __flags_test_type=4
+++ __flags_test_type=4
++ eval '__flags_test_default=""'
+++ __flags_test_default=
++ eval '__flags_test_help="If set, path to a test image to use to create a factory test image. Must be used with --factory_toolkit. Mutually exclusive with --factory."'
+++ __flags_test_help='If set, path to a test image to use to create a factory test image. Must be used with --factory_toolkit. Mutually exclusive with --factory.'
++ eval '__flags_test_short='\''~'\'''
+++ __flags_test_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string factory_toolkit '' 'If set, path to a factory toolkit to use to create a factory test image. Must be used with --test. Mutually exclusive with --factory.'
++ _flags_define 4 factory_toolkit '' 'If set, path to a factory toolkit to use to create a factory test image. Must be used with --test. Mutually exclusive with --factory.'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=factory_toolkit
++ _flags_default_=
++ _flags_help_='If set, path to a factory toolkit to use to create a factory test image. Must be used with --test. Mutually exclusive with --factory.'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' factory_toolkit '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList factory_toolkit board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test nopreserve nodetect_release_image norun_omaha
++ _flags_str_=factory_toolkit
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test nopreserve nodetect_release_image norun_omaha '
++ grep ' factory_toolkit '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_factory_toolkit='\'''\'''
+++ FLAGS_factory_toolkit=
++ eval __flags_factory_toolkit_type=4
+++ __flags_factory_toolkit_type=4
++ eval '__flags_factory_toolkit_default=""'
+++ __flags_factory_toolkit_default=
++ eval '__flags_factory_toolkit_help="If set, path to a factory toolkit to use to create a factory test image. Must be used with --test. Mutually exclusive with --factory."'
+++ __flags_factory_toolkit_help='If set, path to a factory toolkit to use to create a factory test image. Must be used with --test. Mutually exclusive with --factory.'
++ eval '__flags_factory_toolkit_short='\''~'\'''
+++ __flags_factory_toolkit_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ DEFINE_string toolkit_arguments '' 'If set, additional arguments will be passed into the factory toolkit installer. Must be used with --factory_toolkit.'
++ _flags_define 4 toolkit_arguments '' 'If set, additional arguments will be passed into the factory toolkit installer. Must be used with --factory_toolkit.'
++ '[' 4 -lt 4 ']'
++ _flags_type_=4
++ _flags_name_=toolkit_arguments
++ _flags_default_=
++ _flags_help_='If set, additional arguments will be passed into the factory toolkit installer. Must be used with --factory_toolkit.'
++ _flags_short_='~'
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' toolkit_arguments '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a '~' = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList toolkit_arguments board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit nopreserve nodetect_release_image norun_omaha
++ _flags_str_=toolkit_arguments
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit nopreserve nodetect_release_image norun_omaha '
++ grep ' toolkit_arguments '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a '~' '!=' '~' ']'
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_toolkit_arguments='\'''\'''
+++ FLAGS_toolkit_arguments=
++ eval __flags_toolkit_arguments_type=4
+++ __flags_toolkit_arguments_type=4
++ eval '__flags_toolkit_arguments_default=""'
+++ __flags_toolkit_arguments_default=
++ eval '__flags_toolkit_arguments_help="If set, additional arguments will be passed into the factory toolkit installer. Must be used with --factory_toolkit."'
+++ __flags_toolkit_arguments_help='If set, additional arguments will be passed into the factory toolkit installer. Must be used with --factory_toolkit.'
++ eval '__flags_toolkit_arguments_short='\''~'\'''
+++ __flags_toolkit_arguments_short='~'
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ '[' 4 -eq 1 ']'
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ FLAGS_HELP='Prepares factory resources (mini-omaha server, RMA/usb/disk images)
+
+USAGE: make_factory_package.sh [flags] args
+Note environment variables with prefix MFP_ are for reserved for internal use.
+'
++ ENABLE_FIRMWARE_UPDATER=0
++ FLAGS --board hana --release ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin --factory ../../chromiumos_birch_mp_test_image.bin --hwid_updater ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh --diskimg flash.bin --sectors 61071360
++ '[' -z '' ']'
++ DEFINE_boolean help false 'show this help' h
++ _flags_define 1 help false 'show this help' h
++ '[' 5 -lt 4 ']'
++ _flags_type_=1
++ _flags_name_=help
++ _flags_default_=false
++ _flags_help_='show this help'
++ _flags_short_=h
++ _flags_return_=0
++ echo ' ARGC ARGV ERROR FALSE HELP PARENT RESERVED TRUE VERSION '
++ grep ' help '
++ '[' 1 -eq 0 ']'
++ '[' 0 -eq 0 -a 1 -ne 1 -a h = '~' ']'
++ '[' 0 -eq 0 ']'
++ _flags_itemInList help board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments nopreserve nodetect_release_image norun_omaha
++ _flags_str_=help
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments nopreserve nodetect_release_image norun_omaha '
++ grep ' help '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 -a h '!=' '~' ']'
++ _flags_itemInList h '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~' '~'
++ _flags_str_=h
++ shift
++ echo ' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ '
++ grep ' h '
++ '[' 1 -eq 0 ']'
++ flags_return=1
++ unset _flags_str_
++ return 1
++ '[' 0 -eq 0 ']'
++ case ${_flags_type_} in
++ _flags_validateBoolean false
++ _flags_bool_=false
++ flags_return=0
++ case "${_flags_bool_}" in
++ unset _flags_bool_
++ return 0
++ case ${_flags_default_} in
++ _flags_default_=1
++ '[' 0 -eq 0 ']'
++ eval 'FLAGS_help='\''1'\'''
+++ FLAGS_help=1
++ eval __flags_help_type=1
+++ __flags_help_type=1
++ eval '__flags_help_default="1"'
+++ __flags_help_default=1
++ eval '__flags_help_help="show this help"'
+++ __flags_help_help='show this help'
++ eval '__flags_help_short='\''h'\'''
+++ __flags_help_short=h
++ __flags_longNames=' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help '
++ __flags_shortNames=' ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ h '
++ '[' 1 -eq 1 ']'
++ __flags_boolNames=' nopreserve nodetect_release_image norun_omaha nohelp '
++ flags_return=0
++ unset _flags_default_ _flags_help_ _flags_name_ _flags_return_ _flags_short_ _flags_type_
++ '[' 0 -eq 2 ']'
++ return 0
++ '[' 12 -gt 0 ']'
++ '[' 1 -ne 1 ']'
++ _flags_getoptEnhanced --board hana --release ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin --factory ../../chromiumos_birch_mp_test_image.bin --hwid_updater ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh --diskimg flash.bin --sectors 61071360
++ flags_return=0
+++ _flags_genOptStr 0
+++ _flags_optStrType_=0
+++ _flags_opts_=
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo board type
++++ _flags_name_=board
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_board_type
++++ _flags_strToEval_='_flags_value_="${__flags_board_type:-}"'
++++ eval '_flags_value_="${__flags_board_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo board short
++++ _flags_name_=board
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_board_short
++++ _flags_strToEval_='_flags_value_="${__flags_board_short:-}"'
++++ eval '_flags_value_="${__flags_board_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo factory type
++++ _flags_name_=factory
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_factory_type
++++ _flags_strToEval_='_flags_value_="${__flags_factory_type:-}"'
++++ eval '_flags_value_="${__flags_factory_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo factory short
++++ _flags_name_=factory
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_factory_short
++++ _flags_strToEval_='_flags_value_="${__flags_factory_short:-}"'
++++ eval '_flags_value_="${__flags_factory_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo firmware_updater type
++++ _flags_name_=firmware_updater
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_firmware_updater_type
++++ _flags_strToEval_='_flags_value_="${__flags_firmware_updater_type:-}"'
++++ eval '_flags_value_="${__flags_firmware_updater_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo firmware_updater short
++++ _flags_name_=firmware_updater
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_firmware_updater_short
++++ _flags_strToEval_='_flags_value_="${__flags_firmware_updater_short:-}"'
++++ eval '_flags_value_="${__flags_firmware_updater_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo hwid_updater type
++++ _flags_name_=hwid_updater
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_hwid_updater_type
++++ _flags_strToEval_='_flags_value_="${__flags_hwid_updater_type:-}"'
++++ eval '_flags_value_="${__flags_hwid_updater_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo hwid_updater short
++++ _flags_name_=hwid_updater
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_hwid_updater_short
++++ _flags_strToEval_='_flags_value_="${__flags_hwid_updater_short:-}"'
++++ eval '_flags_value_="${__flags_hwid_updater_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo complete_script type
++++ _flags_name_=complete_script
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_complete_script_type
++++ _flags_strToEval_='_flags_value_="${__flags_complete_script_type:-}"'
++++ eval '_flags_value_="${__flags_complete_script_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo complete_script short
++++ _flags_name_=complete_script
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_complete_script_short
++++ _flags_strToEval_='_flags_value_="${__flags_complete_script_short:-}"'
++++ eval '_flags_value_="${__flags_complete_script_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo release type
++++ _flags_name_=release
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_release_type
++++ _flags_strToEval_='_flags_value_="${__flags_release_type:-}"'
++++ eval '_flags_value_="${__flags_release_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo release short
++++ _flags_name_=release
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_release_short
++++ _flags_strToEval_='_flags_value_="${__flags_release_short:-}"'
++++ eval '_flags_value_="${__flags_release_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo omaha_data_dir type
++++ _flags_name_=omaha_data_dir
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_omaha_data_dir_type
++++ _flags_strToEval_='_flags_value_="${__flags_omaha_data_dir_type:-}"'
++++ eval '_flags_value_="${__flags_omaha_data_dir_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo omaha_data_dir short
++++ _flags_name_=omaha_data_dir
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_omaha_data_dir_short
++++ _flags_strToEval_='_flags_value_="${__flags_omaha_data_dir_short:-}"'
++++ eval '_flags_value_="${__flags_omaha_data_dir_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo subfolder type
++++ _flags_name_=subfolder
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_subfolder_type
++++ _flags_strToEval_='_flags_value_="${__flags_subfolder_type:-}"'
++++ eval '_flags_value_="${__flags_subfolder_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo subfolder short
++++ _flags_name_=subfolder
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_subfolder_short
++++ _flags_strToEval_='_flags_value_="${__flags_subfolder_short:-}"'
++++ eval '_flags_value_="${__flags_subfolder_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo usbimg type
++++ _flags_name_=usbimg
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_usbimg_type
++++ _flags_strToEval_='_flags_value_="${__flags_usbimg_type:-}"'
++++ eval '_flags_value_="${__flags_usbimg_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo usbimg short
++++ _flags_name_=usbimg
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_usbimg_short
++++ _flags_strToEval_='_flags_value_="${__flags_usbimg_short:-}"'
++++ eval '_flags_value_="${__flags_usbimg_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo install_shim type
++++ _flags_name_=install_shim
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_install_shim_type
++++ _flags_strToEval_='_flags_value_="${__flags_install_shim_type:-}"'
++++ eval '_flags_value_="${__flags_install_shim_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo install_shim short
++++ _flags_name_=install_shim
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_install_shim_short
++++ _flags_strToEval_='_flags_value_="${__flags_install_shim_short:-}"'
++++ eval '_flags_value_="${__flags_install_shim_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo diskimg type
++++ _flags_name_=diskimg
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_diskimg_type
++++ _flags_strToEval_='_flags_value_="${__flags_diskimg_type:-}"'
++++ eval '_flags_value_="${__flags_diskimg_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo diskimg short
++++ _flags_name_=diskimg
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_diskimg_short
++++ _flags_strToEval_='_flags_value_="${__flags_diskimg_short:-}"'
++++ eval '_flags_value_="${__flags_diskimg_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo preserve type
++++ _flags_name_=preserve
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_preserve_type
++++ _flags_strToEval_='_flags_value_="${__flags_preserve_type:-}"'
++++ eval '_flags_value_="${__flags_preserve_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo preserve short
++++ _flags_name_=preserve
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_preserve_short
++++ _flags_strToEval_='_flags_value_="${__flags_preserve_short:-}"'
++++ eval '_flags_value_="${__flags_preserve_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo sectors type
++++ _flags_name_=sectors
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_sectors_type
++++ _flags_strToEval_='_flags_value_="${__flags_sectors_type:-}"'
++++ eval '_flags_value_="${__flags_sectors_type:-}"'
+++++ _flags_value_=3
++++ '[' -n 3 ']'
++++ flags_return=0
++++ echo 3
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=3
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo sectors short
++++ _flags_name_=sectors
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_sectors_short
++++ _flags_strToEval_='_flags_value_="${__flags_sectors_short:-}"'
++++ eval '_flags_value_="${__flags_sectors_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo detect_release_image type
++++ _flags_name_=detect_release_image
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_detect_release_image_type
++++ _flags_strToEval_='_flags_value_="${__flags_detect_release_image_type:-}"'
++++ eval '_flags_value_="${__flags_detect_release_image_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo detect_release_image short
++++ _flags_name_=detect_release_image
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_detect_release_image_short
++++ _flags_strToEval_='_flags_value_="${__flags_detect_release_image_short:-}"'
++++ eval '_flags_value_="${__flags_detect_release_image_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo config type
++++ _flags_name_=config
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_config_type
++++ _flags_strToEval_='_flags_value_="${__flags_config_type:-}"'
++++ eval '_flags_value_="${__flags_config_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo config short
++++ _flags_name_=config
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_config_short
++++ _flags_strToEval_='_flags_value_="${__flags_config_short:-}"'
++++ eval '_flags_value_="${__flags_config_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo run_omaha type
++++ _flags_name_=run_omaha
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_run_omaha_type
++++ _flags_strToEval_='_flags_value_="${__flags_run_omaha_type:-}"'
++++ eval '_flags_value_="${__flags_run_omaha_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo run_omaha short
++++ _flags_name_=run_omaha
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_run_omaha_short
++++ _flags_strToEval_='_flags_value_="${__flags_run_omaha_short:-}"'
++++ eval '_flags_value_="${__flags_run_omaha_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo test type
++++ _flags_name_=test
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_test_type
++++ _flags_strToEval_='_flags_value_="${__flags_test_type:-}"'
++++ eval '_flags_value_="${__flags_test_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo test short
++++ _flags_name_=test
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_test_short
++++ _flags_strToEval_='_flags_value_="${__flags_test_short:-}"'
++++ eval '_flags_value_="${__flags_test_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo factory_toolkit type
++++ _flags_name_=factory_toolkit
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_factory_toolkit_type
++++ _flags_strToEval_='_flags_value_="${__flags_factory_toolkit_type:-}"'
++++ eval '_flags_value_="${__flags_factory_toolkit_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo factory_toolkit short
++++ _flags_name_=factory_toolkit
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_factory_toolkit_short
++++ _flags_strToEval_='_flags_value_="${__flags_factory_toolkit_short:-}"'
++++ eval '_flags_value_="${__flags_factory_toolkit_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo toolkit_arguments type
++++ _flags_name_=toolkit_arguments
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_toolkit_arguments_type
++++ _flags_strToEval_='_flags_value_="${__flags_toolkit_arguments_type:-}"'
++++ eval '_flags_value_="${__flags_toolkit_arguments_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo toolkit_arguments short
++++ _flags_name_=toolkit_arguments
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_toolkit_arguments_short
++++ _flags_strToEval_='_flags_value_="${__flags_toolkit_arguments_short:-}"'
++++ eval '_flags_value_="${__flags_toolkit_arguments_short:-}"'
+++++ _flags_value_='~'
++++ '[' -n '~' ']'
++++ flags_return=0
++++ echo '~'
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_='~'
+++ '[' '~' '!=' '~' ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo help type
++++ _flags_name_=help
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_help_type
++++ _flags_strToEval_='_flags_value_="${__flags_help_type:-}"'
++++ eval '_flags_value_="${__flags_help_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
++++ _flags_getFlagInfo help short
++++ _flags_name_=help
++++ _flags_info_=short
++++ _flags_nameVar_=__flags_help_short
++++ _flags_strToEval_='_flags_value_="${__flags_help_short:-}"'
++++ eval '_flags_value_="${__flags_help_short:-}"'
+++++ _flags_value_=h
++++ '[' -n h ']'
++++ flags_return=0
++++ echo h
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_shortName_=h
+++ '[' h '!=' '~' ']'
+++ _flags_opts_=h
+++ '[' 1 -ne 1 ']'
+++ echo h
+++ unset _flags_flag_ _flags_opts_ _flags_optStrType_ _flags_shortName_ _flags_type_
+++ return 0
++ _flags_shortOpts_=h
+++ echo ' nopreserve nodetect_release_image norun_omaha nohelp '
+++ sed 's/^ *//;s/ *$//;s/ /,/g'
++ _flags_boolOpts_=nopreserve,nodetect_release_image,norun_omaha,nohelp
+++ _flags_genOptStr 1
+++ _flags_optStrType_=1
+++ _flags_opts_=
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo board type
++++ _flags_name_=board
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_board_type
++++ _flags_strToEval_='_flags_value_="${__flags_board_type:-}"'
++++ eval '_flags_value_="${__flags_board_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo factory type
++++ _flags_name_=factory
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_factory_type
++++ _flags_strToEval_='_flags_value_="${__flags_factory_type:-}"'
++++ eval '_flags_value_="${__flags_factory_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo firmware_updater type
++++ _flags_name_=firmware_updater
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_firmware_updater_type
++++ _flags_strToEval_='_flags_value_="${__flags_firmware_updater_type:-}"'
++++ eval '_flags_value_="${__flags_firmware_updater_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo hwid_updater type
++++ _flags_name_=hwid_updater
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_hwid_updater_type
++++ _flags_strToEval_='_flags_value_="${__flags_hwid_updater_type:-}"'
++++ eval '_flags_value_="${__flags_hwid_updater_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo complete_script type
++++ _flags_name_=complete_script
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_complete_script_type
++++ _flags_strToEval_='_flags_value_="${__flags_complete_script_type:-}"'
++++ eval '_flags_value_="${__flags_complete_script_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo release type
++++ _flags_name_=release
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_release_type
++++ _flags_strToEval_='_flags_value_="${__flags_release_type:-}"'
++++ eval '_flags_value_="${__flags_release_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo omaha_data_dir type
++++ _flags_name_=omaha_data_dir
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_omaha_data_dir_type
++++ _flags_strToEval_='_flags_value_="${__flags_omaha_data_dir_type:-}"'
++++ eval '_flags_value_="${__flags_omaha_data_dir_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo subfolder type
++++ _flags_name_=subfolder
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_subfolder_type
++++ _flags_strToEval_='_flags_value_="${__flags_subfolder_type:-}"'
++++ eval '_flags_value_="${__flags_subfolder_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo usbimg type
++++ _flags_name_=usbimg
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_usbimg_type
++++ _flags_strToEval_='_flags_value_="${__flags_usbimg_type:-}"'
++++ eval '_flags_value_="${__flags_usbimg_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo install_shim type
++++ _flags_name_=install_shim
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_install_shim_type
++++ _flags_strToEval_='_flags_value_="${__flags_install_shim_type:-}"'
++++ eval '_flags_value_="${__flags_install_shim_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo diskimg type
++++ _flags_name_=diskimg
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_diskimg_type
++++ _flags_strToEval_='_flags_value_="${__flags_diskimg_type:-}"'
++++ eval '_flags_value_="${__flags_diskimg_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo preserve type
++++ _flags_name_=preserve
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_preserve_type
++++ _flags_strToEval_='_flags_value_="${__flags_preserve_type:-}"'
++++ eval '_flags_value_="${__flags_preserve_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve
+++ '[' 1 -ne 1 ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo sectors type
++++ _flags_name_=sectors
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_sectors_type
++++ _flags_strToEval_='_flags_value_="${__flags_sectors_type:-}"'
++++ eval '_flags_value_="${__flags_sectors_type:-}"'
+++++ _flags_value_=3
++++ '[' -n 3 ']'
++++ flags_return=0
++++ echo 3
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=3
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors
+++ '[' 3 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo detect_release_image type
++++ _flags_name_=detect_release_image
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_detect_release_image_type
++++ _flags_strToEval_='_flags_value_="${__flags_detect_release_image_type:-}"'
++++ eval '_flags_value_="${__flags_detect_release_image_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image
+++ '[' 1 -ne 1 ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo config type
++++ _flags_name_=config
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_config_type
++++ _flags_strToEval_='_flags_value_="${__flags_config_type:-}"'
++++ eval '_flags_value_="${__flags_config_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo run_omaha type
++++ _flags_name_=run_omaha
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_run_omaha_type
++++ _flags_strToEval_='_flags_value_="${__flags_run_omaha_type:-}"'
++++ eval '_flags_value_="${__flags_run_omaha_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha
+++ '[' 1 -ne 1 ']'
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo test type
++++ _flags_name_=test
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_test_type
++++ _flags_strToEval_='_flags_value_="${__flags_test_type:-}"'
++++ eval '_flags_value_="${__flags_test_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo factory_toolkit type
++++ _flags_name_=factory_toolkit
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_factory_toolkit_type
++++ _flags_strToEval_='_flags_value_="${__flags_factory_toolkit_type:-}"'
++++ eval '_flags_value_="${__flags_factory_toolkit_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo toolkit_arguments type
++++ _flags_name_=toolkit_arguments
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_toolkit_arguments_type
++++ _flags_strToEval_='_flags_value_="${__flags_toolkit_arguments_type:-}"'
++++ eval '_flags_value_="${__flags_toolkit_arguments_type:-}"'
+++++ _flags_value_=4
++++ '[' -n 4 ']'
++++ flags_return=0
++++ echo 4
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=4
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit:,toolkit_arguments
+++ '[' 4 -ne 1 ']'
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit:,toolkit_arguments:
+++ for _flags_flag_ in '${__flags_longNames}'
++++ _flags_getFlagInfo help type
++++ _flags_name_=help
++++ _flags_info_=type
++++ _flags_nameVar_=__flags_help_type
++++ _flags_strToEval_='_flags_value_="${__flags_help_type:-}"'
++++ eval '_flags_value_="${__flags_help_type:-}"'
+++++ _flags_value_=1
++++ '[' -n 1 ']'
++++ flags_return=0
++++ echo 1
++++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
++++ '[' 0 -eq 2 ']'
++++ return 0
+++ _flags_type_=1
+++ case ${_flags_optStrType_} in
+++ _flags_opts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit:,toolkit_arguments:,help
+++ '[' 1 -ne 1 ']'
+++ echo board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit:,toolkit_arguments:,help
+++ unset _flags_flag_ _flags_opts_ _flags_optStrType_ _flags_shortName_ _flags_type_
+++ return 0
++ _flags_longOpts_=board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit:,toolkit_arguments:,help
+++ getopt -o h -l board:,factory:,firmware_updater:,hwid_updater:,complete_script:,release:,omaha_data_dir:,subfolder:,usbimg:,install_shim:,diskimg:,preserve,sectors:,detect_release_image,config:,run_omaha,test:,factory_toolkit:,toolkit_arguments:,help,nopreserve,nodetect_release_image,norun_omaha,nohelp -- --board hana --release ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin --factory ../../chromiumos_birch_mp_test_image.bin --hwid_updater ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh --diskimg flash.bin --sectors 61071360
++ __flags_opts=' --board '\''hana'\'' --release '\''../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin'\'' --factory '\''../../chromiumos_birch_mp_test_image.bin'\'' --hwid_updater '\''../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh'\'' --diskimg '\''flash.bin'\'' --sectors '\''61071360'\'' --'
++ _flags_rtrn_=0
++ '[' 0 -ne 0 ']'
++ unset _flags_boolOpts_ _flags_longOpts_ _flags_rtrn_ _flags_shortOpts_
++ return 0
++ flags_return=0
++ '[' 0 -eq 0 ']'
++ _flags_parseGetopt 12 ' --board '\''hana'\'' --release '\''../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin'\'' --factory '\''../../chromiumos_birch_mp_test_image.bin'\'' --hwid_updater '\''../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh'\'' --diskimg '\''flash.bin'\'' --sectors '\''61071360'\'' --'
++ _flags_argc_=12
++ shift
++ flags_return=0
++ '[' 1 -ne 1 ']'
++ eval set -- ' --board '\''hana'\'' --release '\''../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin'\'' --factory '\''../../chromiumos_birch_mp_test_image.bin'\'' --hwid_updater '\''../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh'\'' --diskimg '\''flash.bin'\'' --sectors '\''61071360'\'' --'
+++ set -- --board hana --release ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin --factory ../../chromiumos_birch_mp_test_image.bin --hwid_updater ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh --diskimg flash.bin --sectors 61071360 --
+++ expr 13 - 1 - 12
++ FLAGS_ARGC=0
++ true
++ _flags_opt_=--board
++ _flags_arg_=hana
++ _flags_type_=0
++ _flags_name_=
++ case "${_flags_opt_}" in
+++ expr --board : '--\(.*\)'
++ _flags_opt_=board
++ _flags_len_=1
++ _flags_itemInList board board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help
++ _flags_str_=board
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help '
++ grep ' board '
++ '[' 0 -eq 0 ']'
++ flags_return=0
++ unset _flags_str_
++ return 0
++ _flags_name_=board
++ '[' -z board ']'
++ '[' 0 -eq 0 ']'
+++ _flags_getFlagInfo board type
+++ _flags_name_=board
+++ _flags_info_=type
+++ _flags_nameVar_=__flags_board_type
+++ _flags_strToEval_='_flags_value_="${__flags_board_type:-}"'
+++ eval '_flags_value_="${__flags_board_type:-}"'
++++ _flags_value_=4
+++ '[' -n 4 ']'
+++ flags_return=0
+++ echo 4
+++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
+++ '[' 0 -eq 2 ']'
+++ return 0
++ _flags_type_=4
++ case ${_flags_type_} in
++ eval 'FLAGS_board='\''hana'\'''
+++ FLAGS_board=hana
++ '[' board = help ']'
++ shift
++ '[' 4 '!=' 1 ']'
++ shift
++ true
++ _flags_opt_=--release
++ _flags_arg_=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ _flags_type_=0
++ _flags_name_=
++ case "${_flags_opt_}" in
+++ expr --release : '--\(.*\)'
++ _flags_opt_=release
++ _flags_len_=1
++ _flags_itemInList release board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help
++ _flags_str_=release
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help '
++ grep ' release '
++ '[' 0 -eq 0 ']'
++ flags_return=0
++ unset _flags_str_
++ return 0
++ _flags_name_=release
++ '[' -z release ']'
++ '[' 0 -eq 0 ']'
+++ _flags_getFlagInfo release type
+++ _flags_name_=release
+++ _flags_info_=type
+++ _flags_nameVar_=__flags_release_type
+++ _flags_strToEval_='_flags_value_="${__flags_release_type:-}"'
+++ eval '_flags_value_="${__flags_release_type:-}"'
++++ _flags_value_=4
+++ '[' -n 4 ']'
+++ flags_return=0
+++ echo 4
+++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
+++ '[' 0 -eq 2 ']'
+++ return 0
++ _flags_type_=4
++ case ${_flags_type_} in
++ eval 'FLAGS_release='\''../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin'\'''
+++ FLAGS_release=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ '[' release = help ']'
++ shift
++ '[' 4 '!=' 1 ']'
++ shift
++ true
++ _flags_opt_=--factory
++ _flags_arg_=../../chromiumos_birch_mp_test_image.bin
++ _flags_type_=0
++ _flags_name_=
++ case "${_flags_opt_}" in
+++ expr --factory : '--\(.*\)'
++ _flags_opt_=factory
++ _flags_len_=1
++ _flags_itemInList factory board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help
++ _flags_str_=factory
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help '
++ grep ' factory '
++ '[' 0 -eq 0 ']'
++ flags_return=0
++ unset _flags_str_
++ return 0
++ _flags_name_=factory
++ '[' -z factory ']'
++ '[' 0 -eq 0 ']'
+++ _flags_getFlagInfo factory type
+++ _flags_name_=factory
+++ _flags_info_=type
+++ _flags_nameVar_=__flags_factory_type
+++ _flags_strToEval_='_flags_value_="${__flags_factory_type:-}"'
+++ eval '_flags_value_="${__flags_factory_type:-}"'
++++ _flags_value_=4
+++ '[' -n 4 ']'
+++ flags_return=0
+++ echo 4
+++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
+++ '[' 0 -eq 2 ']'
+++ return 0
++ _flags_type_=4
++ case ${_flags_type_} in
++ eval 'FLAGS_factory='\''../../chromiumos_birch_mp_test_image.bin'\'''
+++ FLAGS_factory=../../chromiumos_birch_mp_test_image.bin
++ '[' factory = help ']'
++ shift
++ '[' 4 '!=' 1 ']'
++ shift
++ true
++ _flags_opt_=--hwid_updater
++ _flags_arg_=../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ _flags_type_=0
++ _flags_name_=
++ case "${_flags_opt_}" in
+++ expr --hwid_updater : '--\(.*\)'
++ _flags_opt_=hwid_updater
++ _flags_len_=1
++ _flags_itemInList hwid_updater board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help
++ _flags_str_=hwid_updater
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help '
++ grep ' hwid_updater '
++ '[' 0 -eq 0 ']'
++ flags_return=0
++ unset _flags_str_
++ return 0
++ _flags_name_=hwid_updater
++ '[' -z hwid_updater ']'
++ '[' 0 -eq 0 ']'
+++ _flags_getFlagInfo hwid_updater type
+++ _flags_name_=hwid_updater
+++ _flags_info_=type
+++ _flags_nameVar_=__flags_hwid_updater_type
+++ _flags_strToEval_='_flags_value_="${__flags_hwid_updater_type:-}"'
+++ eval '_flags_value_="${__flags_hwid_updater_type:-}"'
++++ _flags_value_=4
+++ '[' -n 4 ']'
+++ flags_return=0
+++ echo 4
+++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
+++ '[' 0 -eq 2 ']'
+++ return 0
++ _flags_type_=4
++ case ${_flags_type_} in
++ eval 'FLAGS_hwid_updater='\''../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh'\'''
+++ FLAGS_hwid_updater=../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ '[' hwid_updater = help ']'
++ shift
++ '[' 4 '!=' 1 ']'
++ shift
++ true
++ _flags_opt_=--diskimg
++ _flags_arg_=flash.bin
++ _flags_type_=0
++ _flags_name_=
++ case "${_flags_opt_}" in
+++ expr --diskimg : '--\(.*\)'
++ _flags_opt_=diskimg
++ _flags_len_=1
++ _flags_itemInList diskimg board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help
++ _flags_str_=diskimg
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help '
++ grep ' diskimg '
++ '[' 0 -eq 0 ']'
++ flags_return=0
++ unset _flags_str_
++ return 0
++ _flags_name_=diskimg
++ '[' -z diskimg ']'
++ '[' 0 -eq 0 ']'
+++ _flags_getFlagInfo diskimg type
+++ _flags_name_=diskimg
+++ _flags_info_=type
+++ _flags_nameVar_=__flags_diskimg_type
+++ _flags_strToEval_='_flags_value_="${__flags_diskimg_type:-}"'
+++ eval '_flags_value_="${__flags_diskimg_type:-}"'
++++ _flags_value_=4
+++ '[' -n 4 ']'
+++ flags_return=0
+++ echo 4
+++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
+++ '[' 0 -eq 2 ']'
+++ return 0
++ _flags_type_=4
++ case ${_flags_type_} in
++ eval 'FLAGS_diskimg='\''flash.bin'\'''
+++ FLAGS_diskimg=flash.bin
++ '[' diskimg = help ']'
++ shift
++ '[' 4 '!=' 1 ']'
++ shift
++ true
++ _flags_opt_=--sectors
++ _flags_arg_=61071360
++ _flags_type_=0
++ _flags_name_=
++ case "${_flags_opt_}" in
+++ expr --sectors : '--\(.*\)'
++ _flags_opt_=sectors
++ _flags_len_=1
++ _flags_itemInList sectors board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help
++ _flags_str_=sectors
++ shift
++ echo ' board factory firmware_updater hwid_updater complete_script release omaha_data_dir subfolder usbimg install_shim diskimg preserve sectors detect_release_image config run_omaha test factory_toolkit toolkit_arguments help '
++ grep ' sectors '
++ '[' 0 -eq 0 ']'
++ flags_return=0
++ unset _flags_str_
++ return 0
++ _flags_name_=sectors
++ '[' -z sectors ']'
++ '[' 0 -eq 0 ']'
+++ _flags_getFlagInfo sectors type
+++ _flags_name_=sectors
+++ _flags_info_=type
+++ _flags_nameVar_=__flags_sectors_type
+++ _flags_strToEval_='_flags_value_="${__flags_sectors_type:-}"'
+++ eval '_flags_value_="${__flags_sectors_type:-}"'
++++ _flags_value_=3
+++ '[' -n 3 ']'
+++ flags_return=0
+++ echo 3
+++ unset _flags_info_ _flags_name_ _flags_strToEval_ _flags_type_ _flags_value_ _flags_nameVar_ _flags_typeVar_
+++ '[' 0 -eq 2 ']'
+++ return 0
++ _flags_type_=3
++ case ${_flags_type_} in
++ _flags_validateInteger 61071360
++ _flags_int_=61071360
++ flags_return=0
++ case ${_flags_int_} in
+++ expr 61071360 : '\([0-9][0-9]*\)'
++ _flags_test_=61071360
++ '[' 61071360 '!=' 61071360 ']'
++ unset _flags_int_ _flags_test_
++ return 0
++ eval 'FLAGS_sectors='\''61071360'\'''
+++ FLAGS_sectors=61071360
++ '[' sectors = help ']'
++ shift
++ '[' 3 '!=' 1 ']'
++ shift
++ true
++ _flags_opt_=--
++ _flags_arg_=
++ _flags_type_=0
++ _flags_name_=
++ case "${_flags_opt_}" in
++ shift
++ break
++ FLAGS_ARGV=
++ '[' 0 -gt 0 ']'
++ unset _flags_arg_ _flags_len_ _flags_name_ _flags_opt_ _flags_pos_ _flags_strToEval_ _flags_type_ _flags_val_
++ return 0
++ flags_return=0
++ '[' 0 -eq 2 ']'
++ return 0
++ ORIGINAL_PARAMS='--board hana --release ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin --factory ../../chromiumos_birch_mp_test_image.bin --hwid_updater ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh --diskimg flash.bin --sectors 61071360'
++ eval set -- ''
+++ set --
++ main
++ set -e
++ trap on_exit EXIT
++ '[' 0 '!=' 0 ']'
++ '[' -n '' ']'
++ check_parameters
++ check_file_param FLAGS_release ''
++ local param=FLAGS_release
++ local msg=
++ local param_name=release
+++ eval echo '$FLAGS_release'
++++ echo ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local param_value=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ '[' -n ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin ']'
++ '[' -f ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin ']'
++ case "${FLAGS_firmware_updater}" in
++ '[' -n flash.bin ']'
++ ENABLE_FIRMWARE_UPDATER=1
++ '[' -n '' -o -n '' ']'
++ '[' -n '' -a -z '' ']'
++ '[' -n '' ']'
++ '[' -n flash.bin ']'
++ check_empty_param FLAGS_firmware_updater 'in --diskimg mode'
++ local param=FLAGS_firmware_updater
++ local 'msg=in --diskimg mode'
++ local param_name=firmware_updater
+++ eval echo '$FLAGS_firmware_updater'
++++ echo
++ local param_value=
++ '[' -z '' ']'
++ check_file_param_or_none FLAGS_hwid_updater 'in --diskimg mode'
++ local param=FLAGS_hwid_updater
++ local 'msg=in --diskimg mode'
++ local param_name=hwid_updater
+++ eval echo '$FLAGS_hwid_updater'
++++ echo ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ local param_value=../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ '[' ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh = none ']'
++ '[' -n ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh ']'
++ '[' -f ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh ']'
++ check_empty_param FLAGS_complete_script 'in --diskimg mode'
++ local param=FLAGS_complete_script
++ local 'msg=in --diskimg mode'
++ local param_name=complete_script
+++ eval echo '$FLAGS_complete_script'
++++ echo
++ local param_value=
++ '[' -z '' ']'
++ check_empty_param FLAGS_install_shim 'in --diskimg mode'
++ local param=FLAGS_install_shim
++ local 'msg=in --diskimg mode'
++ local param_name=install_shim
+++ eval echo '$FLAGS_install_shim'
++++ echo
++ local param_value=
++ '[' -z '' ']'
++ check_false_param FLAGS_run_omaha 'in --diskimg mode'
++ local param=FLAGS_run_omaha
++ local 'msg=in --diskimg mode'
++ local param_name=run_omaha
+++ eval echo '$FLAGS_run_omaha'
++++ echo 1
++ local param_value=1
++ '[' 1 = 1 ']'
++ '[' -n '' ']'
++ check_file_param FLAGS_factory 'in --diskimg mode'
++ local param=FLAGS_factory
++ local 'msg=in --diskimg mode'
++ local param_name=factory
+++ eval echo '$FLAGS_factory'
++++ echo ../../chromiumos_birch_mp_test_image.bin
++ local param_value=../../chromiumos_birch_mp_test_image.bin
++ '[' -n ../../chromiumos_birch_mp_test_image.bin ']'
++ '[' -f ../../chromiumos_birch_mp_test_image.bin ']'
++ '[' -b flash.bin -a '!' -w flash.bin ']'
++ setup_environment
++ find_omaha
++ OMAHA_PROGRAM=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/miniomaha.py
++ '[' -n '' ']'
++ OMAHA_DATA_DIR=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/static/
++ OMAHA_CONF=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/static//miniomaha.conf
++ '[' -f /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/miniomaha.py ']'
++ '[' -n '' ']'
++ '[' 0 -eq 0 ']'
++ echo 'Caching sudo authentication'
+Caching sudo authentication
++ sudo -v
++ echo Done
+Done
+++ dirname ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ RELEASE_DIR=../..
+++ basename ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ RELEASE_IMAGE=chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ '[' -n ../../chromiumos_birch_mp_test_image.bin ']'
++ FACTORY_IMAGE=../../chromiumos_birch_mp_test_image.bin
++ RELEASE_KERNEL=
++ image_has_part_tools
++ image_has_command cgpt
++ type cgpt
++ '[' 0 = 0 ']'
++ prepare_release_image ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ readlink -f ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local image=/home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ mktemp --tmpdir
++ local kernelA=/tmp/tmp.rp95iN3DTB
+++ mktemp --tmpdir
++ local kernelB=/tmp/tmp.ubh8RXXB03
++ image_add_temp /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03'
++ image_dump_partition /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 2
++ image_dump_partition /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 4
+++ image_cros_kernel_boot_type /tmp/tmp.rp95iN3DTB
+++ local keyblock=/tmp/tmp.rp95iN3DTB
+++ local magic flag skip kernel_config
+++ local KEY_BLOCK_FLAG_DEVELOPER_0=1
+++ local KEY_BLOCK_FLAG_DEVELOPER_1=2
+++ local KEY_BLOCK_FLAG_RECOVERY_0=4
+++ local KEY_BLOCK_FLAG_RECOVERY_1=8
+++ local KEY_BLOCK_MAGIC=CHROMEOS
+++ local KEY_BLOCK_MAGIC_SIZE=8
+++ local KEY_BLOCK_FLAG_OFFSET=72
++++ dd if=/tmp/tmp.rp95iN3DTB bs=8 count=1
+++ magic=CHROMEOS
+++ '[' CHROMEOS '!=' CHROMEOS ']'
+++ skip=72
++++ dd if=/tmp/tmp.rp95iN3DTB bs=1 count=1 skip=72
++++ od -t u1 -A n
+++ flag='  11'
+++ '[' 0 '!=' 0 ']'
+++ '[' 8 '!=' 0 ']'
+++ '[' 1 = 0 ']'
+++ image_has_command dump_kernel_config
+++ type dump_kernel_config
++++ strings /tmp/tmp.rp95iN3DTB
++++ grep -w root
++++ grep -w cros_recovery
+++ kernel_config='console= loglevel=7 init=/sbin/init cros_secure oops=panic panic=-1 root=PARTUUID=%U/PARTNROFF=1 rootwait ro dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=0  noinitrd panic=60 cros_recovery kern_b_hash=4edbf8a3b3eb82bedbefbbc920f61f5a239c4df9 vt.global_cursor_default=0 kern_guid=%U   '
+++ echo 'console= loglevel=7 init=/sbin/init cros_secure oops=panic panic=-1 root=PARTUUID=%U/PARTNROFF=1 rootwait ro dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=0  noinitrd panic=60 cros_recovery kern_b_hash=4edbf8a3b3eb82bedbefbbc920f61f5a239c4df9 vt.global_cursor_default=0 kern_guid=%U   '
+++ grep -qw cros_recovery
+++ echo 'console= loglevel=7 init=/sbin/init cros_secure oops=panic panic=-1 root=PARTUUID=%U/PARTNROFF=1 rootwait ro dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=0  noinitrd panic=60 cros_recovery kern_b_hash=4edbf8a3b3eb82bedbefbbc920f61f5a239c4df9 vt.global_cursor_default=0 kern_guid=%U   '
+++ grep -qw kern_b_hash
+++ echo recovery
++ local image_typeA=recovery
+++ image_cros_kernel_boot_type /tmp/tmp.ubh8RXXB03
+++ local keyblock=/tmp/tmp.ubh8RXXB03
+++ local magic flag skip kernel_config
+++ local KEY_BLOCK_FLAG_DEVELOPER_0=1
+++ local KEY_BLOCK_FLAG_DEVELOPER_1=2
+++ local KEY_BLOCK_FLAG_RECOVERY_0=4
+++ local KEY_BLOCK_FLAG_RECOVERY_1=8
+++ local KEY_BLOCK_MAGIC=CHROMEOS
+++ local KEY_BLOCK_MAGIC_SIZE=8
+++ local KEY_BLOCK_FLAG_OFFSET=72
++++ dd if=/tmp/tmp.ubh8RXXB03 bs=8 count=1
+++ magic=CHROMEOS
+++ '[' CHROMEOS '!=' CHROMEOS ']'
+++ skip=72
++++ dd if=/tmp/tmp.ubh8RXXB03 bs=1 count=1 skip=72
++++ od -t u1 -A n
+++ flag='   7'
+++ '[' 4 '!=' 0 ']'
+++ echo ssd
++ local image_typeB=ssd
++ local need_vmlinuz_hd=
++ info 'Image type is [recovery]: /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin'
++ tput2 bold
++ tput bold
++ tput2 setaf 2
++ tput setaf 2
++ echo 'INFO: Image type is [recovery]: /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin'
+INFO: Image type is [recovery]: /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ tput2 sgr0
++ tput sgr0
++ case "${image_typeA}" in
++ RELEASE_KERNEL=/tmp/tmp.ubh8RXXB03
++ need_vmlinuz_hd=TRUE
++ '[' -n TRUE ']'
+++ mktemp -d --tmpdir
++ local temp_mount=/tmp/tmp.0T2ar2c4eZ
++ local vmlinuz_hd_file=vmlinuz_hd.vblock
++ image_add_temp /tmp/tmp.0T2ar2c4eZ
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ'
++ image_mount_partition /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 1 /tmp/tmp.0T2ar2c4eZ ro
++ local file=/home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local part_num=1
++ local mount_point=/tmp/tmp.0T2ar2c4eZ
++ local mount_opt=ro
++ local mount_ext=
+++ image_part_offset /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 1
+++ local file=/home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=1
++++ dirname /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=/home/simon/Documents/Birch/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 1 /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local offset=4382720
+++ image_part_size /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 1
+++ local file=/home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=1
++++ dirname /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=/home/simon/Documents/Birch/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 1 /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local size=28672
++ '[' -z ro ']'
++ mount_opt=,ro
++ sudo mount -o loop,offset=2243952640,sizelimit=14680064,ro /home/simon/Documents/Birch/chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin /tmp/tmp.0T2ar2c4eZ
++ '[' -s /tmp/tmp.0T2ar2c4eZ/vmlinuz_hd.vblock ']'
++ sudo dd if=/tmp/tmp.0T2ar2c4eZ/vmlinuz_hd.vblock of=/tmp/tmp.ubh8RXXB03 bs=512 conv=notrunc
++ image_umount_partition /tmp/tmp.0T2ar2c4eZ
++ local mount_point=/tmp/tmp.0T2ar2c4eZ
++ sudo umount /tmp/tmp.0T2ar2c4eZ
++ '[' 1 = 0 ']'
++ '[' -n '' ']'
++ '[' -n flash.bin ']'
++ generate_img
+++ readlink -f flash.bin
++ local outdev=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local sectors=61071360
++ local hwid_updater=../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ '[' -n ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh ']'
+++ readlink -f ../../hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ hwid_updater=/home/simon/Documents/Birch/hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ prepare_img
+++ readlink -f flash.bin
++ local outdev=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local sectors=61071360
++ echo 'Fetch PMBR'
+Fetch PMBR
+++ mktemp --tmpdir
++ local pmbrcode=/tmp/tmp.uuvevGCNOx
++ image_add_temp /tmp/tmp.uuvevGCNOx
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ /tmp/tmp.uuvevGCNOx'
++ sudo dd bs=512 count=1 if=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin of=/tmp/tmp.uuvevGCNOx status=noxfer
+1+0 records in
+1+0 records out
++ echo 'Prepare base disk image'
+Prepare base disk image
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
+++ stat -c %s /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+stat: cannot stat '/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin': No such file or directory
++ '[' '!' -e /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin -o '' '!=' 31268536320 -o 1 = 1 ']'
++ echo 'Generating empty image file'
+Generating empty image file
++ truncate -s 0 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ truncate -s 31268536320 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ locate_gpt
++ '[' -z '' ']'
++ '[' -x /usr/bin/cgpt ']'
+++ which cgpt
++ GPT=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin/cgpt
++ '[' -z /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin/cgpt ']'
+++ mktemp -d --tmpdir
++ local root_fs_dir=/tmp/tmp.nFAfLshY8U
++ local write_gpt_path=/tmp/tmp.nFAfLshY8U/usr/sbin/write_gpt.sh
++ image_add_temp /tmp/tmp.nFAfLshY8U
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ /tmp/tmp.uuvevGCNOx /tmp/tmp.nFAfLshY8U'
++ image_mount_partition ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 3 /tmp/tmp.nFAfLshY8U ro '-t ext2'
++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local part_num=3
++ local mount_point=/tmp/tmp.nFAfLshY8U
++ local mount_opt=ro
++ local 'mount_ext=-t ext2'
+++ image_part_offset ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 3
+++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=3
++++ dirname ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 3 ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local offset=286720
+++ image_part_size ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 3
+++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=3
++++ dirname ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 3 ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local size=4096000
++ '[' -z ro ']'
++ mount_opt=,ro
++ sudo mount -o loop,offset=146800640,sizelimit=2097152000,ro -t ext2 ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin /tmp/tmp.nFAfLshY8U
++ '[' '!' -f /tmp/tmp.nFAfLshY8U/usr/sbin/write_gpt.sh ']'
+++ mktemp --tmpdir
++ local partition_script=/tmp/tmp.Idmr5LlEzM
++ image_add_temp /tmp/tmp.Idmr5LlEzM
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ /tmp/tmp.uuvevGCNOx /tmp/tmp.nFAfLshY8U /tmp/tmp.Idmr5LlEzM'
++ sudo cat /tmp/tmp.nFAfLshY8U/usr/sbin/write_gpt.sh
++ echo 'write_base_table $1 /tmp/tmp.uuvevGCNOx'
++ sed -i 's"/usr/sbin/chromeos-common.sh"lib/chromeos-common.sh"g' /tmp/tmp.Idmr5LlEzM
++ sed -i 's"/usr/share/misc/chromeos-common.sh"lib/chromeos-common.sh"g' /tmp/tmp.Idmr5LlEzM
++ sed -i 's,locate_gpt,PATH="/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin:/home/simon/depot_tools:/home/simon/bin:/home/simon/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin";locate_gpt,g' /tmp/tmp.Idmr5LlEzM
++ local ret=0
+++ sudo losetup -f --show /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local outdev_block=/dev/loop1
++ cd /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup
++ sudo bash /tmp/tmp.Idmr5LlEzM /dev/loop1
+32+0 records in
+32+0 records out
+16384 bytes (16 kB, 16 KiB) copied, 0.020114 s, 815 kB/s
+33+0 records in
+33+0 records out
+16896 bytes (17 kB, 16 KiB) copied, 0.0161533 s, 1.0 MB/s
+WARNING: Primary GPT header is invalid
+WARNING: Secondary GPT header is invalid
+A96215A4-96B3-9F47-A103-AE0FC64F8569
+ERROR: unrecognized option: -B
+
+Usage: cgpt add [OPTIONS] DRIVE
+
+Add, edit, or remove a partition entry.
+
+Options:
+  -D NUM       Size (in bytes) of the disk where partitions reside
+                 default 0, meaning partitions and GPT structs are
+                 both on DRIVE
+  -i NUM       Specify partition (default is next available)
+  -b NUM       Beginning sector
+  -s NUM       Size in sectors
+  -t GUID      Partition Type GUID
+  -u GUID      Partition Unique ID
+  -l LABEL     Label
+  -S NUM       set Successful flag (0|1)
+  -T NUM       set Tries flag (0-15)
+  -P NUM       set Priority flag (0-15)
+  -A NUM       set raw 64-bit attribute value
+
+Use the -i option to modify an existing partition.
+The -b, -s, and -t options must be given for new partitions.
+
+The partition type may also be given as one of these aliases:
+
+    firmware    ChromeOS firmware
+    kernel      ChromeOS kernel
+    rootfs      ChromeOS rootfs
+    data        Linux data
+    reserved    ChromeOS reserved
+    efi         EFI System Partition
+    unused      Unused (nonexistent) partition
+
+       start        size    part  contents
+           0           1          PMBR (Boot GUID: A96215A4-96B3-9F47-A103-AE0FC64F8569)
+           1           1          Pri GPT header
+           2          32          Pri GPT table
+     8671232    52367360       1  Label: "STATE"
+                                  Type: Linux data
+                                  UUID: D122D957-92E3-9D4A-AE34-1436D77C3E5E
+       20480       32768       2  Label: "KERN-A"
+                                  Type: ChromeOS kernel
+                                  UUID: 5B6779DF-5D0C-AC48-B1D0-4DA15667A69D
+                                  Attr: priority=15 tries=15 successful=0
+     4476928     4194304       3  Label: "ROOT-A"
+                                  Type: ChromeOS rootfs
+                                  UUID: 7B2D6976-F160-284A-B30C-19F68D37A7E9
+       53248       32768       4  Label: "KERN-B"
+                                  Type: ChromeOS kernel
+                                  UUID: 3804D04D-9BAE-824D-A72B-A34952B80422
+                                  Attr: priority=0 tries=15 successful=0
+      282624     4194304       5  Label: "ROOT-B"
+                                  Type: ChromeOS rootfs
+                                  UUID: 03C2B5F3-BE39-EB4C-846C-E0FE1C6F959B
+       16448           1       6  Label: "KERN-C"
+                                  Type: ChromeOS kernel
+                                  UUID: 5A2F97C3-12A1-ED47-BDD8-8B7B0529AF72
+                                  Attr: priority=0 tries=15 successful=0
+       16449           1       7  Label: "ROOT-C"
+                                  Type: ChromeOS rootfs
+                                  UUID: A475E8F7-841A-CB49-90EB-3A5B5EE7B59F
+       86016       32768       8  Label: "OEM"
+                                  Type: Linux data
+                                  UUID: C7EF46EC-2EDF-474F-B874-5FC80715DEA3
+       16450           1       9  Label: "reserved"
+                                  Type: ChromeOS reserved
+                                  UUID: 0B911B40-8F3E-384E-9E22-F7967BED6835
+       16451           1      10  Label: "reserved"
+                                  Type: ChromeOS reserved
+                                  UUID: BD512996-15B0-404C-8B2B-D3460F9B1F4E
+          64       16384      11  Label: "RWFW"
+                                  Type: ChromeOS firmware
+                                  UUID: D47BAA71-6AD3-3241-99DE-9AFEACB14BF5
+      249856       32768      12  Label: "EFI-SYSTEM"
+                                  Type: EFI System Partition
+                                  UUID: A96215A4-96B3-9F47-A103-AE0FC64F8569
+    61071327          32          Sec GPT table
+    61071359           1          Sec GPT header
++ sudo losetup -d /dev/loop1
++ image_umount_partition /tmp/tmp.nFAfLshY8U
++ local mount_point=/tmp/tmp.nFAfLshY8U
++ sudo umount /tmp/tmp.nFAfLshY8U
++ '[' 0 = 0 ']'
++ sudo /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/bin/cgpt add -i 2 -S 1 -P 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local release_image=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ echo 'Release Kernel'
+Release Kernel
++ '[' -n /tmp/tmp.ubh8RXXB03 ']'
++ image_partition_copy_from_file /tmp/tmp.ubh8RXXB03 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 4
++ local src=/tmp/tmp.ubh8RXXB03 dst=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin dst_part=4
+++ stat -c%s /tmp/tmp.ubh8RXXB03
++ local size1=32768
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 4
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=4
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 4 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size2=32768
++ '[' 32768 '!=' 32768 ']'
++ image_update_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 4
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=4
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 4
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=4
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 4 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=53248
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 4
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=4
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 4 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=32768
++ image_update_partial_file /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 53248 32768
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=53248
++ local sectors=32768
++ local bs=512
++ local oflag=oflag=dsync
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
++ oflag=
++ '[' 1 = 1 ']'
++ bs=1024
++ offset=26624
++ sectors=16384
++ '[' 1 = 1 ']'
++ bs=2048
++ offset=13312
++ sectors=8192
++ '[' 1 = 1 ']'
++ bs=4096
++ offset=6656
++ sectors=4096
++ '[' 1 = 1 ']'
++ bs=8192
++ offset=3328
++ sectors=2048
++ '[' 1 = 1 ']'
++ bs=16384
++ offset=1664
++ sectors=1024
++ '[' 1 = 1 ']'
++ bs=32768
++ offset=832
++ sectors=512
++ '[' 1 = 1 ']'
++ bs=65536
++ offset=416
++ sectors=256
++ '[' 1 = 1 ']'
++ bs=131072
++ offset=208
++ sectors=128
++ '[' 1 = 1 ']'
++ bs=262144
++ offset=104
++ sectors=64
++ '[' 1 = 1 ']'
++ bs=524288
++ offset=52
++ sectors=32
++ '[' 1 = 1 ']'
++ bs=1048576
++ offset=26
++ sectors=16
++ '[' 1 = 1 ']'
++ bs=2097152
++ offset=13
++ sectors=8
++ '[' 0 = 1 ']'
++ image_has_command pv
++ type pv
++ dd of=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin bs=2097152 seek=13 count=8 iflag=fullblock conv=notrunc status=noxfer
++ echo 'Release Rootfs'
+Release Rootfs
++ image_partition_overwrite ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 3 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 5
++ local src=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin src_part=3 dst=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin dst_part=5
+++ image_part_size ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 3
+++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=3
++++ dirname ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 3 ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local size1=4096000
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 5
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=5
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 5 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size2=4194304
++ '[' 4096000 -gt 4194304 ']'
++ image_dump_partition ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 3
++ image_update_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 5
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=5
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 5
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=5
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 5 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=282624
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 5
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=5
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 5 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=4194304
++ image_update_partial_file /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 282624 4194304
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=282624
++ local sectors=4194304
++ local bs=512
++ local oflag=oflag=dsync
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
++ oflag=
++ '[' 1 = 1 ']'
++ bs=1024
++ offset=141312
++ sectors=2097152
++ '[' 1 = 1 ']'
++ bs=2048
++ offset=70656
++ sectors=1048576
++ '[' 1 = 1 ']'
++ bs=4096
++ offset=35328
++ sectors=524288
++ '[' 1 = 1 ']'
++ bs=8192
++ offset=17664
++ sectors=262144
++ '[' 1 = 1 ']'
++ bs=16384
++ offset=8832
++ sectors=131072
++ '[' 1 = 1 ']'
++ bs=32768
++ offset=4416
++ sectors=65536
++ '[' 1 = 1 ']'
++ bs=65536
++ offset=2208
++ sectors=32768
++ '[' 1 = 1 ']'
++ bs=131072
++ offset=1104
++ sectors=16384
++ '[' 1 = 1 ']'
++ bs=262144
++ offset=552
++ sectors=8192
++ '[' 1 = 1 ']'
++ bs=524288
++ offset=276
++ sectors=4096
++ '[' 1 = 1 ']'
++ bs=1048576
++ offset=138
++ sectors=2048
++ '[' 1 = 1 ']'
++ bs=2097152
++ offset=69
++ sectors=1024
++ '[' 0 = 1 ']'
++ image_has_command pv
++ type pv
++ dd of=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin bs=2097152 seek=69 count=1024 iflag=fullblock conv=notrunc status=noxfer
++ echo 'OEM parition'
+OEM parition
++ image_partition_overwrite ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 8 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 8
++ local src=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin src_part=8 dst=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin dst_part=8
+++ image_part_size ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 8
+++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=8
++++ dirname ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 8 ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local size1=32768
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 8
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=8
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 8 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size2=32768
++ '[' 32768 -gt 32768 ']'
++ image_dump_partition ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 8
++ image_update_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 8
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=8
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 8
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=8
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 8 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=86016
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 8
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=8
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 8 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=32768
++ image_update_partial_file /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 86016 32768
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=86016
++ local sectors=32768
++ local bs=512
++ local oflag=oflag=dsync
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
++ oflag=
++ '[' 1 = 1 ']'
++ bs=1024
++ offset=43008
++ sectors=16384
++ '[' 1 = 1 ']'
++ bs=2048
++ offset=21504
++ sectors=8192
++ '[' 1 = 1 ']'
++ bs=4096
++ offset=10752
++ sectors=4096
++ '[' 1 = 1 ']'
++ bs=8192
++ offset=5376
++ sectors=2048
++ '[' 1 = 1 ']'
++ bs=16384
++ offset=2688
++ sectors=1024
++ '[' 1 = 1 ']'
++ bs=32768
++ offset=1344
++ sectors=512
++ '[' 1 = 1 ']'
++ bs=65536
++ offset=672
++ sectors=256
++ '[' 1 = 1 ']'
++ bs=131072
++ offset=336
++ sectors=128
++ '[' 1 = 1 ']'
++ bs=262144
++ offset=168
++ sectors=64
++ '[' 1 = 1 ']'
++ bs=524288
++ offset=84
++ sectors=32
++ '[' 1 = 1 ']'
++ bs=1048576
++ offset=42
++ sectors=16
++ '[' 1 = 1 ']'
++ bs=2097152
++ offset=21
++ sectors=8
++ '[' 0 = 1 ']'
++ image_has_command pv
++ type pv
++ dd of=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin bs=2097152 seek=21 count=8 iflag=fullblock conv=notrunc status=noxfer
++ echo 'Factory Kernel'
+Factory Kernel
++ image_partition_copy ../../chromiumos_birch_mp_test_image.bin 2 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 2
++ local src=../../chromiumos_birch_mp_test_image.bin src_part=2 dst=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin dst_part=2
+++ image_part_size ../../chromiumos_birch_mp_test_image.bin 2
+++ local file=../../chromiumos_birch_mp_test_image.bin
+++ local partno=2
++++ dirname ../../chromiumos_birch_mp_test_image.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 2 ../../chromiumos_birch_mp_test_image.bin
++ local size1=32768
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 2
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=2
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 2 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size2=32768
++ '[' 32768 '!=' 32768 ']'
++ image_dump_partition ../../chromiumos_birch_mp_test_image.bin 2
++ image_update_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 2
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=2
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 2
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=2
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 2 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=20480
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 2
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=2
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 2 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=32768
++ image_update_partial_file /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 20480 32768
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=20480
++ local sectors=32768
++ local bs=512
++ local oflag=oflag=dsync
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
++ oflag=
++ '[' 1 = 1 ']'
++ bs=1024
++ offset=10240
++ sectors=16384
++ '[' 1 = 1 ']'
++ bs=2048
++ offset=5120
++ sectors=8192
++ '[' 1 = 1 ']'
++ bs=4096
++ offset=2560
++ sectors=4096
++ '[' 1 = 1 ']'
++ bs=8192
++ offset=1280
++ sectors=2048
++ '[' 1 = 1 ']'
++ bs=16384
++ offset=640
++ sectors=1024
++ '[' 1 = 1 ']'
++ bs=32768
++ offset=320
++ sectors=512
++ '[' 1 = 1 ']'
++ bs=65536
++ offset=160
++ sectors=256
++ '[' 1 = 1 ']'
++ bs=131072
++ offset=80
++ sectors=128
++ '[' 1 = 1 ']'
++ bs=262144
++ offset=40
++ sectors=64
++ '[' 1 = 1 ']'
++ bs=524288
++ offset=20
++ sectors=32
++ '[' 1 = 1 ']'
++ bs=1048576
++ offset=10
++ sectors=16
++ '[' 1 = 1 ']'
++ bs=2097152
++ offset=5
++ sectors=8
++ '[' 0 = 1 ']'
++ image_has_command pv
++ type pv
++ dd of=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin bs=2097152 seek=5 count=8 iflag=fullblock conv=notrunc status=noxfer
++ echo 'Factory Rootfs'
+Factory Rootfs
++ image_partition_overwrite ../../chromiumos_birch_mp_test_image.bin 3 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 3
++ local src=../../chromiumos_birch_mp_test_image.bin src_part=3 dst=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin dst_part=3
+++ image_part_size ../../chromiumos_birch_mp_test_image.bin 3
+++ local file=../../chromiumos_birch_mp_test_image.bin
+++ local partno=3
++++ dirname ../../chromiumos_birch_mp_test_image.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 3 ../../chromiumos_birch_mp_test_image.bin
++ local size1=2641920
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 3
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=3
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 3 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size2=4194304
++ '[' 2641920 -gt 4194304 ']'
++ image_dump_partition ../../chromiumos_birch_mp_test_image.bin 3
++ image_update_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 3
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=3
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 3
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=3
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 3 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=4476928
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 3
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=3
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 3 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=4194304
++ image_update_partial_file /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 4476928 4194304
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=4476928
++ local sectors=4194304
++ local bs=512
++ local oflag=oflag=dsync
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
++ oflag=
++ '[' 1 = 1 ']'
++ bs=1024
++ offset=2238464
++ sectors=2097152
++ '[' 1 = 1 ']'
++ bs=2048
++ offset=1119232
++ sectors=1048576
++ '[' 1 = 1 ']'
++ bs=4096
++ offset=559616
++ sectors=524288
++ '[' 1 = 1 ']'
++ bs=8192
++ offset=279808
++ sectors=262144
++ '[' 1 = 1 ']'
++ bs=16384
++ offset=139904
++ sectors=131072
++ '[' 1 = 1 ']'
++ bs=32768
++ offset=69952
++ sectors=65536
++ '[' 1 = 1 ']'
++ bs=65536
++ offset=34976
++ sectors=32768
++ '[' 1 = 1 ']'
++ bs=131072
++ offset=17488
++ sectors=16384
++ '[' 1 = 1 ']'
++ bs=262144
++ offset=8744
++ sectors=8192
++ '[' 1 = 1 ']'
++ bs=524288
++ offset=4372
++ sectors=4096
++ '[' 1 = 1 ']'
++ bs=1048576
++ offset=2186
++ sectors=2048
++ '[' 1 = 1 ']'
++ bs=2097152
++ offset=1093
++ sectors=1024
++ '[' 0 = 1 ']'
++ image_has_command pv
++ type pv
++ dd of=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin bs=2097152 seek=1093 count=1024 iflag=fullblock conv=notrunc status=noxfer
++ echo 'Factory Stateful'
+Factory Stateful
++ image_partition_overwrite ../../chromiumos_birch_mp_test_image.bin 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
++ local src=../../chromiumos_birch_mp_test_image.bin src_part=1 dst=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin dst_part=1
+++ image_part_size ../../chromiumos_birch_mp_test_image.bin 1
+++ local file=../../chromiumos_birch_mp_test_image.bin
+++ local partno=1
++++ dirname ../../chromiumos_birch_mp_test_image.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 1 ../../chromiumos_birch_mp_test_image.bin
++ local size1=2490368
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=1
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size2=52367360
++ '[' 2490368 -gt 52367360 ']'
++ image_dump_partition ../../chromiumos_birch_mp_test_image.bin 1
++ image_update_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=1
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=1
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=8671232
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=1
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=52367360
++ image_update_partial_file /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 8671232 52367360
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=8671232
++ local sectors=52367360
++ local bs=512
++ local oflag=oflag=dsync
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
++ oflag=
++ '[' 1 = 1 ']'
++ bs=1024
++ offset=4335616
++ sectors=26183680
++ '[' 1 = 1 ']'
++ bs=2048
++ offset=2167808
++ sectors=13091840
++ '[' 1 = 1 ']'
++ bs=4096
++ offset=1083904
++ sectors=6545920
++ '[' 1 = 1 ']'
++ bs=8192
++ offset=541952
++ sectors=3272960
++ '[' 1 = 1 ']'
++ bs=16384
++ offset=270976
++ sectors=1636480
++ '[' 1 = 1 ']'
++ bs=32768
++ offset=135488
++ sectors=818240
++ '[' 1 = 1 ']'
++ bs=65536
++ offset=67744
++ sectors=409120
++ '[' 1 = 1 ']'
++ bs=131072
++ offset=33872
++ sectors=204560
++ '[' 1 = 1 ']'
++ bs=262144
++ offset=16936
++ sectors=102280
++ '[' 1 = 1 ']'
++ bs=524288
++ offset=8468
++ sectors=51140
++ '[' 1 = 1 ']'
++ bs=1048576
++ offset=4234
++ sectors=25570
++ '[' 1 = 1 ']'
++ bs=2097152
++ offset=2117
++ sectors=12785
++ '[' 0 = 1 ']'
++ image_has_command pv
++ type pv
++ dd of=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin bs=2097152 seek=2117 count=12785 iflag=fullblock conv=notrunc status=noxfer
++ echo 'EFI Partition'
+EFI Partition
++ image_partition_copy ../../chromiumos_birch_mp_test_image.bin 12 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12
++ local src=../../chromiumos_birch_mp_test_image.bin src_part=12 dst=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin dst_part=12
+++ image_part_size ../../chromiumos_birch_mp_test_image.bin 12
+++ local file=../../chromiumos_birch_mp_test_image.bin
+++ local partno=12
++++ dirname ../../chromiumos_birch_mp_test_image.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 12 ../../chromiumos_birch_mp_test_image.bin
++ local size1=32768
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=12
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 12 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size2=32768
++ '[' 32768 '!=' 32768 ']'
++ image_update_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12
++ image_dump_partition ../../chromiumos_birch_mp_test_image.bin 12
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=12
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=12
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 12 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=249856
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=12
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 12 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=32768
++ image_update_partial_file /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 249856 32768
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=249856
++ local sectors=32768
++ local bs=512
++ local oflag=oflag=dsync
++ '[' -b /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin ']'
++ oflag=
++ '[' 1 = 1 ']'
++ bs=1024
++ offset=124928
++ sectors=16384
++ '[' 1 = 1 ']'
++ bs=2048
++ offset=62464
++ sectors=8192
++ '[' 1 = 1 ']'
++ bs=4096
++ offset=31232
++ sectors=4096
++ '[' 1 = 1 ']'
++ bs=8192
++ offset=15616
++ sectors=2048
++ '[' 1 = 1 ']'
++ bs=16384
++ offset=7808
++ sectors=1024
++ '[' 1 = 1 ']'
++ bs=32768
++ offset=3904
++ sectors=512
++ '[' 1 = 1 ']'
++ bs=65536
++ offset=1952
++ sectors=256
++ '[' 1 = 1 ']'
++ bs=131072
++ offset=976
++ sectors=128
++ '[' 1 = 1 ']'
++ bs=262144
++ offset=488
++ sectors=64
++ '[' 1 = 1 ']'
++ bs=524288
++ offset=244
++ sectors=32
++ '[' 1 = 1 ']'
++ bs=1048576
++ offset=122
++ sectors=16
++ '[' 1 = 1 ']'
++ bs=2097152
++ offset=61
++ sectors=8
++ '[' 0 = 1 ']'
++ image_has_command pv
++ type pv
++ dd of=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin bs=2097152 seek=61 count=8 iflag=fullblock conv=notrunc status=noxfer
++ apply_hwid_updater /home/simon/Documents/Birch/hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local hwid_updater=/home/simon/Documents/Birch/hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh
++ local outdev=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local hwid_result=0
++ '[' -n /home/simon/Documents/Birch/hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh ']'
+++ image_map_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local part_num=1
++++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
++++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++++ local partno=1
+++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
++++ image_has_command cgpt
++++ type cgpt
++++ cgpt show -b -i 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local offset=8671232
++++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
++++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++++ local partno=1
+++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
++++ image_has_command cgpt
++++ type cgpt
++++ cgpt show -s -i 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local size=52367360
+++ sudo losetup --offset 4439670784 --sizelimit=26812088320 -f --show /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local state_dev=/dev/loop0
++ sudo sh /home/simon/Documents/Birch/hwid_v3_bundle_HANA_2017_10_30_15_37_37_133.sh /dev/loop0
+Updating to stateful partition /dev/loop0...
+x - created lock directory _sh51385.
+x - extracting HANA (text)
+x - removed lock directory _sh51385.
++ image_unmap_partition /dev/loop0
++ local map_point=/dev/loop0
++ sudo losetup -d /dev/loop0
++ '[' 0 = 0 ']'
++ tar_unencrypted ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local indev=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local outdev=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local result=0
+++ mktemp -d --tmpdir
++ local release_stateful_dir=/tmp/tmp.PT6R37Fzg2
++ image_add_temp /tmp/tmp.PT6R37Fzg2
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ /tmp/tmp.uuvevGCNOx /tmp/tmp.nFAfLshY8U /tmp/tmp.Idmr5LlEzM /tmp/tmp.PT6R37Fzg2'
++ image_mount_partition ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 1 /tmp/tmp.PT6R37Fzg2 ro
++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local part_num=1
++ local mount_point=/tmp/tmp.PT6R37Fzg2
++ local mount_opt=ro
++ local mount_ext=
+++ image_part_offset ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 1
+++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=1
++++ dirname ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 1 ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local offset=4382720
+++ image_part_size ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin 1
+++ local file=../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local partno=1
++++ dirname ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
+++ local unpack_file=../../unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 1 ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin
++ local size=28672
++ '[' -z ro ']'
++ mount_opt=,ro
++ sudo mount -o loop,offset=2243952640,sizelimit=14680064,ro ../../chromeos_9460.73.0_hana_recovery_stable-channel_mp-v2.bin /tmp/tmp.PT6R37Fzg2
++ '[' -d /tmp/tmp.PT6R37Fzg2/unencrypted ']'
++ echo 'Creating stateful_files.tar.xz in stateful partition...'
+Creating stateful_files.tar.xz in stateful partition...
+++ mktemp -d --tmpdir
++ local factory_stateful_dir=/tmp/tmp.WICFEuOxnU
++ image_add_temp /tmp/tmp.WICFEuOxnU
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ /tmp/tmp.uuvevGCNOx /tmp/tmp.nFAfLshY8U /tmp/tmp.Idmr5LlEzM /tmp/tmp.PT6R37Fzg2 /tmp/tmp.WICFEuOxnU'
++ image_mount_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1 /tmp/tmp.WICFEuOxnU rw
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=1
++ local mount_point=/tmp/tmp.WICFEuOxnU
++ local mount_opt=rw
++ local mount_ext=
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=1
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=8671232
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 1
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=1
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 1 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=52367360
++ '[' -z rw ']'
++ mount_opt=,rw
++ sudo mount -o loop,offset=4439670784,sizelimit=26812088320,rw /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin /tmp/tmp.WICFEuOxnU
++ local dest_file=/tmp/tmp.WICFEuOxnU/stateful_files.tar.xz
++ sudo find /tmp/tmp.PT6R37Fzg2/unencrypted -printf '%U:%G %p\n'
++ grep -v -E '^0:0 '
++ sudo tar acf /tmp/tmp.WICFEuOxnU/stateful_files.tar.xz --numeric-owner -C /tmp/tmp.PT6R37Fzg2 unencrypted
++ ls -hl /tmp/tmp.WICFEuOxnU/stateful_files.tar.xz
+-rw-r--r-- 1 root root 8.1M 11月  3 16:29 /tmp/tmp.WICFEuOxnU/stateful_files.tar.xz
++ image_umount_partition /tmp/tmp.WICFEuOxnU
++ local mount_point=/tmp/tmp.WICFEuOxnU
++ sudo umount /tmp/tmp.WICFEuOxnU
++ image_umount_partition /tmp/tmp.PT6R37Fzg2
++ local mount_point=/tmp/tmp.PT6R37Fzg2
++ sudo umount /tmp/tmp.PT6R37Fzg2
++ '[' 0 = 0 ']'
+++ mktemp -d --tmpdir
++ local tmpesp=/tmp/tmp.IX3zkAC4Cc
++ image_add_temp /tmp/tmp.IX3zkAC4Cc
++ _IMAGE_TEMP_OBJECTS=' /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ /tmp/tmp.uuvevGCNOx /tmp/tmp.nFAfLshY8U /tmp/tmp.Idmr5LlEzM /tmp/tmp.PT6R37Fzg2 /tmp/tmp.WICFEuOxnU /tmp/tmp.IX3zkAC4Cc'
++ image_mount_partition /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12 /tmp/tmp.IX3zkAC4Cc rw
++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local part_num=12
++ local mount_point=/tmp/tmp.IX3zkAC4Cc
++ local mount_opt=rw
++ local mount_ext=
+++ image_part_offset /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=12
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -b -i 12 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local offset=249856
+++ image_part_size /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin 12
+++ local file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local partno=12
++++ dirname /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
+++ local unpack_file=/home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/unpack_partitions.sh
+++ image_has_command cgpt
+++ type cgpt
+++ cgpt show -s -i 12 /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin
++ local size=32768
++ '[' -z rw ']'
++ mount_opt=,rw
++ sudo mount -o loop,offset=127926272,sizelimit=16777216,rw /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin /tmp/tmp.IX3zkAC4Cc
++ '[' -d /tmp/tmp.IX3zkAC4Cc/syslinux ']'
++ image_umount_partition /tmp/tmp.IX3zkAC4Cc
++ local mount_point=/tmp/tmp.IX3zkAC4Cc
++ sudo umount /tmp/tmp.IX3zkAC4Cc
++ echo 'Generated Image at /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin.'
+Generated Image at /home/simon/Documents/Birch/ChromeOS-factory-R52-8182.67.0-hana/factory_setup/flash.bin.
++ echo Done
+Done
++ on_exit
++ image_clean_temp
++ local 'temp_list= /tmp/tmp.rp95iN3DTB /tmp/tmp.ubh8RXXB03 /tmp/tmp.0T2ar2c4eZ /tmp/tmp.uuvevGCNOx /tmp/tmp.nFAfLshY8U /tmp/tmp.Idmr5LlEzM /tmp/tmp.PT6R37Fzg2 /tmp/tmp.WICFEuOxnU /tmp/tmp.IX3zkAC4Cc'
++ local object
++ _IMAGE_TEMP_OBJECTS=
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.rp95iN3DTB ']'
++ rm -f /tmp/tmp.rp95iN3DTB
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.ubh8RXXB03 ']'
++ rm -f /tmp/tmp.ubh8RXXB03
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.0T2ar2c4eZ ']'
++ sudo umount /tmp/tmp.0T2ar2c4eZ
++ true
++ sudo rmdir /tmp/tmp.0T2ar2c4eZ
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.uuvevGCNOx ']'
++ rm -f /tmp/tmp.uuvevGCNOx
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.nFAfLshY8U ']'
++ sudo umount /tmp/tmp.nFAfLshY8U
++ true
++ sudo rmdir /tmp/tmp.nFAfLshY8U
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.Idmr5LlEzM ']'
++ rm -f /tmp/tmp.Idmr5LlEzM
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.PT6R37Fzg2 ']'
++ sudo umount /tmp/tmp.PT6R37Fzg2
++ true
++ sudo rmdir /tmp/tmp.PT6R37Fzg2
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.WICFEuOxnU ']'
++ sudo umount /tmp/tmp.WICFEuOxnU
++ true
++ sudo rmdir /tmp/tmp.WICFEuOxnU
++ for object in '$temp_list'
++ '[' -d /tmp/tmp.IX3zkAC4Cc ']'
++ sudo umount /tmp/tmp.IX3zkAC4Cc
++ true
++ sudo rmdir /tmp/tmp.IX3zkAC4Cc
+

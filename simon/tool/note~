@@ -1,0 +1,18 @@
+ps -aux   #show the process
+
+
+gnome-terminal  #open a terminal
+gnome-screenshot #take a screenshot
+gnome-calculator #open a calculator
+
+
+gedit					#open a editor
+eog <photo>   #view a photo
+
+libreoffice		#open office word
+/usr/lib/libreoffice/program/oosplash --calc
+/usr/lib/libreoffice/program/oosplash --writer
+/usr/lib/libreoffice/program/oosplash --impress
+
+/usr/lib/firefox/firefox
+

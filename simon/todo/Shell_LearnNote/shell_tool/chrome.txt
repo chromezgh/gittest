@@ -1,0 +1,55 @@
+【问题】
+ 1.HWID测试 2.工厂升级包制作验证 3.
+装test RMA 是否会影响VPD信息
+RMA修改
+上传到谷歌的log的要求是什么，有什么作用
+VPD 信息的BOM维护，与写入流程？
+怎样缩短开机时间（研究GBB）？
+读取机器或U盘里面的release image版本信息
+
+参考N23,如何触屏取代键盘？【】
+怎样编写选择判断输入出函数 、怎样编写命令执行函数、脚本、怎样显示各种详细版本信息？
+怎样识别各种设备接入与拔出？
+
+编写shell脚本，一整套系统
+研究reboot脚本
+终端无线唤醒研究
+
+验证一台电脑同时给多台机器装系统？
+Intel流程
+guide & partner流程
+4.弄清tpm 与gbb  知道如何救机 【 】
+3.python教程  js教程
+5.moblab实验室
+
+【重要】：
+工厂准备：1.所有熟悉测试项及常见BUG 2.bios与ec烧录 3.抓取bug 
+    RMA的安装什么情况下会清掉注册码 
+
+    工厂验证区别，具体工厂哪个阶段用，整个工厂流程  
+
+    熟悉整个代码路径、结构（参考develop文档）
+
+制作一个shell脚本，可以自动选择制作image，路径，所要烧录的镜像，完善报错提示！！！
+
+【finished】：
+chromebook上安装Ubuntu （fail）
+
+samba访问权限问题      （success）
+编译shopfloor	       （success）
+制作factory test image （success）
+抽取与编译bios、ec     （success）
+how to make factory bundle      （success）
+git教程                （finish）
+Tmux学习               （finish）
+HWID修改提交           （finish）
+pbody、global环境搭建，具体步骤（finish）
+升级包的制作           （待总结）
+三种方式代码提交与修改 （finish） 
+git repo               （finish）
+升级包的作用           （finish）  
+checksum 的读取        （finish）
+使用本地的HWID 需要屏蔽checksum (ok)
+使用本地的bios 需要屏蔽verifyKey (ok)    
+gooftool wipe_in_place 就是调用start factory-wipe （ok） 
+天线测试1234567890 是密码 (finish)  

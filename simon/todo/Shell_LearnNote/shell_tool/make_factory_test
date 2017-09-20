@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Copyright (c) 22/02/2017 The Bitland SW Simon. All rights reserved.
+# Extracting the .tar.xz file for the command called 'Extract Here' by right click has no effect.
+# should cp this shell script in target directory
+clear
+echo
+cat << EOF
+*****pelase enter your choise:(1-3)*****
+echo
+1.Make factory_test_image
+2.Make RMA 
+3.Exit
+EOF
+echo
+read -p "Now select the top option to: " Input
+
+cp /dir/to/toolkit.run /tmp 
+cp /dir/to/test_image.bin /tmp 
+if [ file exist ]; then
+cd factory_jerry
+cros_sdk
+cd /tmp/
+./install_factory_toolkit.run chromiumos_test_image.bin --yes
+mv chromiumos_test_image.bin /Achieve/to/chromiumos_factory_test_image.bin
+exit 
+
+cd /dir/to/factory_setup/
+./extract_firmware_updater.sh -i ../../[release image path]
+sudo mkdir /mnt/factory
+./mount_partition.sh ../../chromiumos_factory_test_image.bin 1 /mnt/factory/
+sudo cp chromeos-firmwareupdate /mnt/factory/dev_image/factory/board/
+sudo touch /mnt/factory/dev_image/etc/lsb-factory
+sudo umount /mnt/factory/
+
+cd factory_setup/
+make RMA
+sudo ./make_factory_package.sh --board veyron_jerry --release ../../chromeos_7077.95.0_veyron-jerry_recovery_stable-channel_jerry-mp-v5.bin --factory ../../chromiumos_factory_test_image.bin --hwid_updater ../hwid/hwid_v3_bundle_JERRY.sh --firmware_updater ./chromeos-firmwareupdate --complete_script complete_script_sample.sh

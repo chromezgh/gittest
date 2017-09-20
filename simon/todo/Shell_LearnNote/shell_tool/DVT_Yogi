@@ -1,0 +1,22 @@
+DVT Prepare 
+
+2017.02.20
+
+平板模式           【delete】
+天线密码、强度问题 【verified】
+
+KB测试是否需要     【研究】
+增加屏幕均一性测试 【verified】
+增加EMR pen测试    【verified】
+
+新开issue : 1.test image 不能直接解压   【  】
+            2.miniomaha 方式不可行      【  】
+            3.OOB检测开机电源灯闪俩次
+            4.HWID ec_flash_chip改变    【验证】同一台机器上，138~175 test:winbond W25Q.128 ||| 186~187 test:Generic HWSEQ
+			5.bios几率性不起，屏背光亮
+			6.SMTThermalLoad 加散热片后测试不过  【研究】
+			7.电池测试温度标准
+            8.wipe_in_place 不能用在186版，只能用prepare_wipe代替   【  】
+			9.KB 最新版driver在工厂image下无作用，而oak版的有用     【  】
+
+   大封装及一般板子上做整个工厂流程验证 【【【     】】】

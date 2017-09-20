@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Copyright (c) 22/02/2017 The Bitland SW Authors. All rights reserved.
+# For verifying the factory flow by RMA before copy machine downloaded.
+
+vpd -l -i RW_VPD -s gbind_attribute=33333333333333333333333333333333333333333333333333333333333333332dbecc73
+vpd -l -i RW_VPD -s ubind_attribute=323232323232323232323232323232323232323232323232323232323232323256850612
+echo "Register code writed,you can complete the factory test by RMA !"
+echo "Run command: vpd -l -i RW_VPD ,to confirm register_code is OK !"
+

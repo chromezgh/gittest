@@ -1,0 +1,21 @@
+BUG：
+1.   factory install process did not complete.Auto-testing stopped.
+    please install the factory test image using thr mini-Omaha server rather than booting from a USB drive.
+
+2.如何下载没有下载按钮但是可以在线播放的网页视频？
+
+3.环境中/trunk/src/script的脚本,貌似就可以生成factory bundle下的脚本，思考？
+
+4.怎样将chroot中的文件拷贝到环境外？
+
+5.没有FSI如何获取gbb？
+
+
+ftp://ftpuser01:ct1qxx@ftp1.bitland.com.cn/ChromeBook/
+
+ftp://pos_goo:rmagoogle@ftpchromeos.positivo.corp/chromeos_rma_logs/
+
+\\172.16.100.16\apps 
+
+
+薪酬绩效组 - 张佳佳B02885 2017-02-21 12:12:05Dear All:      深圳市住房公积金管理中心于2017年1月10日发布通知，针对2017年的住房公积金联名卡的办理已进行变更，烦请大家相互通知转告，谢谢！（备注：由员工本人即可办理公积金联名卡）      以下是办理公积金联名卡的操作流程：      链接地址：<http://www.szzfgjj.com/ywgz/jcl/201701/t20170110_5869952.htm>
