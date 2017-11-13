@@ -61,14 +61,14 @@ is_ip_ok() {
 remote_host_set() {
     for IP_SET in $(seq 1 100)
     do     
-				if [ "$1" == "101.1.2.$IP_SET" ] || [ "$1" == "chrome" ] || [ "$1" == "dut" ]; then
+	if [ "$1" == "101.1.2.$IP_SET" ] || [ "$1" == "chrome" ] || [ "$1" == "dut" ]; then
             #connect to chromebook
             user=root
             password="test0000"
             DUT_IP="101.1.2.$IP_SET"
-						if [ "$DUT_IP" == "101.1.2.4" ]; then
-								continue				
-				    fi 
+	    if [ "$DUT_IP" == "101.1.2.4" ]; then
+		continue				
+            fi 
             is_ip_ok $DUT_IP || continue
             info $user:$password@$DUT_IP
             return
