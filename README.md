@@ -1,4 +1,4 @@
-# gittest
+# SW no thing is impossible 
 for studying git 
 hello world!!!
 
