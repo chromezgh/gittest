@@ -1,4 +1,4 @@
-# SW no thing is impossible 
+# SW no thing is impossible! 
 for studying git 
 
 
