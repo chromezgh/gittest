@@ -1,5 +1,14 @@
-# gittest
+# SW no thing is impossible 
 for studying git 
 hello world!!!
-6.22 create a new branch  called factory 
-aaaaaa
+
+
+11/13/2017 for easy work !!!
+
+
+
+
+
+
+
+
