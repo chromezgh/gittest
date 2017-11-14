@@ -16,3 +16,6 @@ libreoffice		#open office word
 
 /usr/lib/firefox/firefox
 
+sudo apt-get install sox libsox-fmt-all
+play <music>
+
