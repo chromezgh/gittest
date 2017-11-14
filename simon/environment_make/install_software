@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+
+msg() {
+	echo "  \033[32m$@\033[0m"
+	echo "  has been successful installed !!!"
+}
+# update source list
+update_list() {
+	sudo apt-get update
+	sudo apt-get upgrade
+}
+
+# install meld
+install_meld() {
+	sudo apt-get install meld 
+}
+# install google-chrome-stable
+install_chrome() {
+	sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
+	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
+	sudo apt-get update
+	sudo apt-get install google-chrome-stable	#install chrome
+	/usr/bin/google-chrome-stable	#start chrome
+}
+
+main() {
+	install_meld
+	update_list
+	msg update
+}
+main "$@"

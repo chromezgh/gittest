@@ -1,0 +1,89 @@
+#!/bin/bash
+sudo apt-get install git-core gitk git-gui subversion curl
+uname -m     结果为：x86_64
+
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+
+export PATH=`pwd`/depot_tools:"$PATH"
+echo "export PATH=\`pwd\`/depot_tools:\"\$PATH\"" >> ~/.bashrc
+umask 022
+echo "umask 022" >> ~/.bashrc
+
+
+cd /tmp
+cat > ./sudo_editor <<EOF
+#!/bin/sh
+echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells
+echo Defaults timestamp_timeout=180 >> \$1 # Time between re-requesting your password, in minutes
+EOF
+chmod +x ./sudo_editor
+sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
+
+git config --global user.email "guohui.zhou@bitland.com.cn"
+git config --global user.name "zgh"  
+cat ~/.gitconfig
+
+mkdir ~/factory_jerry
+cd ~/factory_jerry
+
+#init the repository what you want
+repo init -u https://chromium.googlesource.com/chromiumos/manifest.git -b factory-veyron-6591.B  --repo-url https://chromium.googlesource.com/external/repo.git 
+#-b factory branch
+
+repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git
+#-b master branch
+
+repo init -u https://chromium.googlesource.com/chromiumos/manifest.git -b firmware-veyron-6588.B  --repo-url https://chromium.googlesource.com/external/repo.git 
+#-b firmware branch
+
+firefox --new-window https://www.googlesource.com/new-password
+#config the gitcoolies,update the passwd
+cat ~/.gitcookies 
+#cat to confirm the cookie
+
+cp -r path/to/local_manifests/ ~/factory_jerry/.repo/  
+#different branch has different local_manifests
+
+#wait to verify, isn't need note the webplot in manifest.xml
+
+#in factory_jerry dir
+repo sync
+cros_sdk --no-ns-pid 
+
+./setup_board --board=veyron_jerry
+**************************************只是jerry平台需要这样做*************************************
+cd ../overlays/overlay-veyron/
+cp media-libs/mali-drivers-bin/ ../../private-overlays/overlay-veyron-private/media-libs/ -R
+cd ../../private-overlays/overlay-veyron-private/media-libs/
+ls
+rm -rf mali-drivers
+ls
+cd ../../../
+cd private-overlays/
+vim overlay-veyron-private/profiles/base/package.use (mali-drivers后加-bin)
+vim overlay-veyron-private/virtual/opengles/opengles-3.ebuild (mali-drivers后加-bin)
+************************************************************************************************
+sudo echo "ACCEPT_LICENSE=\"*\"" >> /etc/make.conf.user  #(doesn't work)
+cd ~/trunk/src/scripts/
+./build_packages --board=veyron_jerry
+./build_image --board=veyron_jerry test
+
+
+要点解释：
+1.为git配置用户名和邮箱：供提交代码时验证身份使用，提交代码的log里面会显示提交者的信息
+2.repo init：下载或更新repo配置和脚本集，在执行命令时所在的目录下生成.repo目录
+3..netrc文件或.gitcookies文件：提供同步下载私有代码时，代码所在网站的登陆用户名和密码（若不下载私有目录的代码，可不配置）
+4.local_manifests文件夹（内涵local_manifest.xml文件）：local_manifest.xml文件配置了下载私有代码的网站和代码存放目录及指定下载哪个分支的代码
+5.repo sync 同步(下载)代码 （下载了chromite、chromium、src等文件夹及AUTHORS、LICENSE文件等）
+6.cros_sdk 创建chroot目录(google开发的一个服务我们开发工作的环境)
+7.board（平台名称+board）：与底层打交道，上层通过它获取底层内容；
+touch ~/.gitcookies
+chmod 0600 ~/.gitcookies
+
+git config --global http.cookiefile ~/.gitcookies
+
+tr , \\t <<\__END__ >>~/.gitcookies
+.googlesource.com,TRUE,/,TRUE,2147483647,o,git-guohui.zhou.bitland.com.cn=1/zUJCCurR47scXxuctDUHA1_xyW6sffa2GndCacNQUwI
+__END__
+
+
