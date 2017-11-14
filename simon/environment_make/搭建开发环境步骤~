@@ -1,0 +1,79 @@
+1.sudo apt-get install git-core gitk git-gui subversion curl
+2.git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+3.export PATH=`pwd`/depot_tools:"$PATH"
+4.vim ~/.bashrc  (将上一步的命令添加到文件末尾) （新安装的linux默认未安装vim，根据提示用sudo apt-get install vim安装即可）
+5.复制粘贴以下命令回车即可
+cd /tmp
+cat > ./sudo_editor <<EOF
+#!/bin/sh
+echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells
+echo Defaults timestamp_timeout=180 >> \$1 # Time between re-requesting your password, in minutes
+EOF
+chmod +x ./sudo_editor
+sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
+6.配置git：换成自己的邮箱和主机名即可
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+  （可用cat ~/.gitconfig命令查看配置结果）
+7.检查系统环境（架构），运行命令：uname -m     结果为：x86_64
+8.设置默认文件权限：umask 022
+9.vim ~/.bashrc  （将上一步命令umask 022添加到文件末尾）
+10.mkdir ~/factory_jerry（目录名可自己起）
+11.cd ~/factory_jerry
+12.下载哪个分支，运行哪条命令
+   repo init -u https://chromium.googlesource.com/chromiumos/manifest.git -b factory-veyron-6591.B  --repo-url https://chromium.googlesource.com/external/repo.git （工厂分支）
+   repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git （主分支）
+   repo init -u https://chromium.googlesource.com/chromiumos/manifest.git -b firmware-veyron-6588.B  --repo-url https://chromium.googlesource.com/external/repo.git （firmware分支）
+13.拷贝.netrc文件到home目录(用户主目录的home目录) （可以从别人那儿拷贝，也可自己创建；.netrc为隐藏文件，linux默认看不到，linux下按ctrl+h即可看到隐藏文件）
+   .netrc文件内容如下：（你们可直接复制，有了自己的账号，可以修改为自己的用户名密码）：
+machine chrome-internal.googlesource.com login git-zhangjb.bitland.com.cn password 1/nz32ktpPCQBSVmB_uYjnoO-LRsSCF3SRLuc95cRUytY
+machine chrome-internal-review.googlesource.com login git-zhangjb.bitland.com.cn password 1/nz32ktpPCQBSVmB_uYjnoO-LRsSCF3SRLuc95cRUytY
+   (.netrc文件可用配置.gitcookies来代替：进入https://www.googlesource.com/new-password，复制已选中的命令，粘贴到命令行。（可用cat ~/.gitcookies命令查看结果）)
+14.拷贝local_manifests文件夹到.repo/目录，或自己新建（内含local_manifest.xml文件）（每个分支的文件不相同）
+   工厂分支和firmware分支还要修改.repo/目录下manifest.xml，注释掉 <!-- <project name="chromiumos/platform/webplot" path="src/platform/webplot" />-->，主分支不需要修改；
+   (以下是先把local_manifests文件夹拷到home目录(用户主目录的home目录)下，再拷到.repo目录并修改manifest.xml的实现命令，仅供参考)
+   cd .repo/
+   ls
+   cp ~/local_manifests/ . -R
+   ls
+   cd local_manifests/
+   vim local_manifest.xml    （仅仅查看了一下）
+   ls
+   cd ../
+   ls
+   vim manifest.xml   （工厂分支和firmware分支注释掉那一行）
+   cd ../../
+15.进入factory_jerry目录，运行repo sync
+16.cros_sdk
+17.
+   ./setup_board --board=veyron_jerry
+18.
+**************************************只是jerry平台需要这样做*************************************
+   cd ../overlays/overlay-veyron/
+   cp media-libs/mali-drivers-bin/ ../../private-overlays/overlay-veyron-private/media-libs/ -R
+   cd ../../private-overlays/overlay-veyron-private/media-libs/
+   ls
+   rm -rf mali-drivers
+   ls
+   cd ../../../
+   cd private-overlays/
+   vim overlay-veyron-private/profiles/base/package.use (mali-drivers后加-bin)
+   vim overlay-veyron-private/virtual/opengles/opengles-3.ebuild (mali-drivers后加-bin)
+************************************************************************************************
+   sudo vim /etc/make.conf.user（增加：ACCEPT_LICENSE="*"）
+   
+19. cd ~/trunk/src/scripts/
+    ./build_packages --board=veyron_jerry      （环境搭建到此已结束）
+    ./build_image --board=veyron_jerry test    （编译test image）
+
+
+要点解释：
+1.为git配置用户名和邮箱：供提交代码时验证身份使用，提交代码的log里面会显示提交者的信息
+2.repo init：下载或更新repo配置和脚本集，在执行命令时所在的目录下生成.repo目录
+3..netrc文件或.gitcookies文件：提供同步下载私有代码时，代码所在网站的登陆用户名和密码（若不下载私有目录的代码，可不配置）
+4.local_manifests文件夹（内涵local_manifest.xml文件）：local_manifest.xml文件配置了下载私有代码的网站和代码存放目录及指定下载哪个分支的代码
+5.repo sync 同步(下载)代码 （下载了chromite、chromium、src等文件夹及AUTHORS、LICENSE文件等）
+6.cros_sdk 创建chroot目录(google开发的一个服务我们开发工作的环境)
+7.board（平台名称+board）：与底层打交道，上层通过它获取底层内容；
+
+

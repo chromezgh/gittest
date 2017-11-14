@@ -1,0 +1,25 @@
+<manifest>
+   <remote fetch="https://chromium.googlesource.com" name="cros" review="https://chromium-review.googlesource.com"/>
+   <remote fetch="https://chrome-internal.googlesource.com" name="cros-internal" review="https://chrome-internal-review.googlesource.com"/>
+   <default remote="cros" revision="refs/heads/factory-oak-8182.B" sync-j="8"/>
+   <remote name="cros-internal"
+           fetch="https://chrome-internal.googlesource.com"
+           review="https://chrome-internal-review.googlesource.com"/>
+		   
+   <project remote="cros-internal"
+            path="src/private-overlays/overlay-hana-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-hana-private"/>		
+   <project remote="cros-internal"  
+            path="src/private-overlays/baseboard-oak-private"
+            groups="minilayout"
+            name="chromeos/overlays/baseboard-oak-private"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/chipset-mt8173-private"
+            groups="minilayout"
+            name="chromeos/overlays/chipset-mt8173-private"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/project-cheets-private"
+            groups="minilayout"
+            name="chromeos/overlays/project-cheets-private"/>
+</manifest>

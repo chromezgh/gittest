@@ -1,0 +1,79 @@
+<manifest>
+   <remote fetch="https://chromium.googlesource.com" name="cros" review="https://chromium-review.googlesource.com"/>
+   <remote fetch="https://chrome-internal.googlesource.com" name="cros-internal" review="https://chrome-internal-review.googlesource.com"/>
+   <remote name="cros-internal"
+           fetch="https://chrome-internal.googlesource.com"
+           review="https://chrome-internal-review.googlesource.com"/>
+
+	 <!--   base private need to sync    -->
+   <project remote="cros-internal"
+            path="src/private-overlays/chipset-apl-private"
+            groups="minilayout"
+            name="chromeos/overlays/chipset-apl-private"/>
+   <project remote="cros-internal"
+            path="src/private-overlays/chromeos-partner-overlay"
+            groups="minilayout"
+            name="chromeos/overlays/chromeos-partner-overlay"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/project-cheets-private"
+            groups="minilayout"
+            name="chromeos/overlays/project-cheets-private"/>
+
+	 <!-- for reef private,baseboard also is reef    -->
+   <project remote="cros-internal"
+            path="src/private-overlays/overlay-reef-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-reef-private"/>
+   <project remote="cros-internal"
+            path="src/private-overlays/overlay-reef-uni-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-reef-uni-private"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/baseboard-reef-private"
+            groups="minilayout"
+            name="chromeos/overlays/baseboard-reef-private"/>
+
+   <project remote="cros-internal"
+            path="src/private-overlays/overlay-coral-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-coral-private"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/baseboard-coral-private"
+            groups="minilayout"
+            name="chromeos/overlays/baseboard-coral-private"/>
+
+ 	 <!-- for hana private,baseboard also is oak    --> 
+   <!--<project remote="cros-internal"
+            path="src/private-overlays/overlay-hana-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-hana-private"/>		
+   <project remote="cros-internal"  
+            path="src/private-overlays/baseboard-oak-private"
+            groups="minilayout"
+            name="chromeos/overlays/baseboard-oak-private"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/chipset-mt8173-private"
+            groups="minilayout"
+            name="chromeos/overlays/chipset-mt8173-private"/> -->
+
+	 <!-- for pbody private,baseboard is glados    -->
+   <!--<project remote="cros-internal"
+            path="src/private-overlays/overlay-pbody-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-pbody-private"/>		
+   <project remote="cros-internal"  
+            path="src/private-overlays/baseboard-glados-private"
+            groups="minilayout"
+            name="chromeos/overlays/baseboard-glados-private"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/overlay-glados-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-glados-private"/>
+   <project remote="cros-internal"  
+            path="src/private-overlays/chipset-skl-private"
+            groups="minilayout"
+            name="chromeos/overlays/chipset-skl-private"/> -->
+
+
+
+</manifest>

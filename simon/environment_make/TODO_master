@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# remove 'chromeos-base/chromeos-cheets' in chromeos-bsp-hana-private-0.0.1.ebuild
+cd ~/trunk/src/private-overlays/overlay-hana-private/chromeos-base/chromeos-bsp-hana-private
+sed -i 's/chromeos-base\/chromeos-cheets//g' chromeos-bsp-hana-private-0.0.1.ebuild
+
+# remove 'cheets-private' in layout.conf
+cd ~/trunk/src/private-overlays/overlay-hana-private/metadata
+sed -i 's/cheets-private//g' layout.conf
+
+# remove 'dev-util/PVRTrace' in chromeos-bsp-test-root-3.ebuild
+cd ~/trunk/src/private-overlays/chipset-mt8173-private/virtual/chromeos-bsp-test-root
+sed -i 's/dev-util\/PVRTrace//g' chromeos-bsp-test-root-3.ebuild
+
+# remove 'dev-util/PVRPerfServer' in chromeos-bsp-test-3.ebuild
+cd ~/trunk/src/private-overlays/chipset-mt8173-private/virtual/chromeos-bsp-test
+sed -i 's/dev-util\/PVRPerfServer//g' chromeos-bsp-test-3.ebuild
+
+# remove 'cheets-private:base' in parent
+cd ~/trunk/src/private-overlays/overlay-hana-private/profiles/base
+sed -i 's/cheets-private:base//g' parent
+
+# remove 'img-ddk-3*.ebuild'
+cd ~/trunk/src/private-overlays/chipset-mt8173-private/virtual/img-ddk
+rm img-ddk-3*.ebuild
+
+cd ~/trunk/src/scripts

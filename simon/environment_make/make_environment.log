@@ -1,0 +1,155 @@
+simon@simon-ThinkPad-E460:~$ sudo apt-get install git-core gitk git-gui subversion curl
+[sudo] password for simon: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following extra packages will be installed:
+  git git-man libapr1 libaprutil1 libcurl3 liberror-perl libserf-1-1 libsvn1
+Suggested packages:
+  git-daemon-run git-daemon-sysvinit git-doc git-el git-email gitweb git-arch
+  git-bzr git-cvs git-mediawiki git-svn subversion-tools db5.3-util
+The following NEW packages will be installed:
+  git git-core git-gui git-man gitk libapr1 libaprutil1 liberror-perl
+  libserf-1-1 libsvn1 subversion
+The following packages will be upgraded:
+  curl libcurl3
+2 upgraded, 11 newly installed, 0 to remove and 254 not upgraded.
+Need to get 5,375 kB of archives.
+After this operation, 30.4 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+...
+Processing triggers for libc-bin (2.19-0ubuntu6.9) ...
+simon@simon-ThinkPad-E460:~$ git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+Cloning into 'depot_tools'...
+remote: Sending approximately 26.74 MiB ...
+remote: Total 22412 (delta 14318), reused 22412 (delta 14318)
+Receiving objects: 100% (22412/22412), 26.74 MiB | 2.03 MiB/s, done.
+Resolving deltas: 100% (14318/14318), done.
+Checking connectivity... done.
+
+simon@simon-ThinkPad-E460:~$ export PATH=`pwd`/depot_tools:"$PATH"
+simon@simon-ThinkPad-E460:~$ echo "export PATH=\`pwd\`/depot_tools:\"\$PATH\"" >> ~/.bashrc
+simon@simon-ThinkPad-E460:~$ umask 022
+simon@simon-ThinkPad-E460:~$ echo "umask 022" >> ~/.bashrc
+simon@simon-ThinkPad-E460:~$ cd /tmp
+simon@simon-ThinkPad-E460:/tmp$ cat > ./sudo_editor <<EOF
+> #!/bin/sh
+> echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells
+> echo Defaults timestamp_timeout=180 >> \$1 # Time between re-requesting your password, in minutes
+> EOF
+simon@simon-ThinkPad-E460:/tmp$ chmod +x ./sudo_editor
+simon@simon-ThinkPad-E460:/tmp$ sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
+simon@simon-ThinkPad-E460:/tmp$ git config --global user.email "guohui.zhou@bitland.com.cn"
+simon@simon-ThinkPad-E460:/tmp$ git config --global user.name "zgh"
+simon@simon-ThinkPad-E460:/tmp$ cat ~/.gitconfig
+[user]
+	email = guohui.zhou@bitland.com.cn
+	name = zgh
+simon@simon-ThinkPad-E460:/tmp$ cd ;mkdir ~/factory_oak
+simon@simon-ThinkPad-E460:~$ cd factory_oak/
+simon@simon-ThinkPad-E460:~/factory_oak$ repo init -u https://chromium.googlesource.com/chromiumos/manifest.git -b factory-oak-8182.B  --repo-url https://chromium.googlesource.com/external/repo.git
+...
+Your identity is: zgh <guohui.zhou@bitland.com.cn>
+If you want to change this, please re-run 'repo init' with --config-name
+
+Testing colorized output (for 'repo diff', 'repo status'):
+  black    red      green    yellow   blue     magenta   cyan     white 
+  bold     dim      ul       reverse 
+Enable color display in this user account (y/N)? y
+
+repo has been initialized in /home/simon/factory_oak
+simon@simon-ThinkPad-E460:~/factory_oak$ firefox --new-window https://www.googlesource.com/new-password
+^C
+simon@simon-ThinkPad-E460:~/factory_oak$ touch ~/.gitcookies
+simon@simon-ThinkPad-E460:~/factory_oak$ chmod 0600 ~/.gitcookies
+simon@simon-ThinkPad-E460:~/factory_oak$ 
+simon@simon-ThinkPad-E460:~/factory_oak$ git config --global http.cookiefile ~/.gitcookies
+simon@simon-ThinkPad-E460:~/factory_oak$ 
+simon@simon-ThinkPad-E460:~/factory_oak$ tr , \\t <<\__END__ >>~/.gitcookies
+> .googlesource.com,TRUE,/,TRUE,2147483647,o,git-guohui.zhou.bitland.com.cn=1/zUJCCurR47scXxuctDUHA1_xyW6sffa2GndCacNQUwI
+> __END__
+simon@simon-ThinkPad-E460:~/factory_oak$ cp -r ~/Desktop/local_manifests/ ~/factory_oak/.repo/
+simon@simon-ThinkPad-E460:~/factory_oak$ repo sync
+
+
+# in chroot
+simon@simon-ThinkPad-E460:~/factory_oak$ cros_sdk --no-ns-pid
+[sudo] password for simon: 
+08:45:45: NOTICE: Downloading SDK tarball...
+...
+Pending 0/17, [Time 09:07:08 | Elapsed 1m44.2s | Load 5.35 2.13 0.91]
+Merge complete
+Done
+Scanning Configuration files...
+Exiting: Nothing left to do; exiting. :)
+INFO    : Elapsed time (update_chroot): 1m50s
+Now using icedtea-bin-7 as your generation-2 system JVM
+INFO    cros_sdk:make_chroot: Elapsed time (make_chroot.sh): 4m53s
+
+cros_sdk:make_chroot: All set up.  To enter the chroot, run:
+$ cros_sdk --enter 
+
+CAUTION: Do *NOT* rm -rf the chroot directory; if there are stale bind
+mounts you may end up deleting your source tree too.  To unmount and
+delete the chroot cleanly, use:
+$ cros_sdk --delete 
+(cr) (factory-oak-8182.B/(33c8a27...)) simon@simon-ThinkPad-E460 ~/trunk/src/scripts $ ./setup_board --board=hana 
+INFO    : Elapsed time (run_chroot_version_hooks): 0m0s
+INFO    : Updating chroot
+INFO    : Clearing shadow utils lockfiles under /
+INFO    : Updating cross-compilers
+
+#sudo echo "ACCEPT_LICENSE=\"*\"" >> /etc/make.conf.user  #(doesn't work,so do it manually)
+(cr) (factory-oak-8182.B/(33c8a27...)) simon@simon-ThinkPad-E460 ~/trunk/src/scripts $ sudo vim /etc/make.conf.user 
+
+(cr) (factory-oak-8182.B/(33c8a27...)) simon@simon-ThinkPad-E460 ~/trunk/src/scripts $ chmod 755 TODO_factory 
+
+#the 3rd doesn't need in factory branch
+(cr) (factory-oak-8182.B/(33c8a27...)) simon@simon-ThinkPad-E460 ~/trunk/src/scripts $ ./TODO_factory 
+sed: -e expression #1, char 33: unknown option to `s'
+./TODO_factory: line 12: cd: /home/simon/trunk/src/private-overlays/chipset-mt8173-private/virtual/chromeos-bsp-test-root: No such file or directory
+sed: -e expression #1, char 21: unknown option to `s'
+sed: -e expression #1, char 26: unknown option to `s'
+
+(cr) (factory-oak-8182.B/(33c8a27...)) simon@simon-ThinkPad-E460 ~/trunk/src/scripts $ ./build_packages --board=hana
+ChromeOS version information:
+    CHROME_BRANCH=52
+    CHROME_VERSION=
+    CHROMEOS_VERSION_STRING=8182.67.2017_06_26_0941
+    CHROME_BASE=
+INFO    : Elapsed time (run_chroot_version_hooks): 0m0s
+...
+Merge complete
+Done
+Builds complete
+INFO    : Elapsed time (build_packages): 2m38s
+Done
+(cr) (factory-oak-8182.B/(33c8a27...)) simon@simon-ThinkPad-E460 ~/trunk/src/scripts $ ./build_image --board=hana test
+
+complete
+Body verification succeeded.
+Config:
+console= loglevel=7 init=/sbin/init cros_secure oops=panic panic=-1 root=/dev/dm-0 rootwait ro dm_verity.error_behavior=3 dm_verity.max_bios=-1 dm_verity.dev_wait=1 dm="1 vroot none ro 1,0 2506752 verity payload=PARTUUID=%U/PARTNROFF=1 hashtree=PARTUUID=%U/PARTNROFF=1 hashstart=2506752 alg=sha1 root_hexdigest=6fe2b0772e9423e47de903d2bcb9e27f2d453b18 salt=4cc2639336e17e37636b1d0cb6d67102f4ecfd6b1eeff43e2f700a29345f155f" noinitrd cros_debug vt.global_cursor_default=0 kern_guid=%U 
+1+0 records in
+1+0 records out
+65536 bytes (66 kB) copied, 0.000129685 s, 505 MB/s
+INFO    : Kernel partition image emitted: /mnt/host/source/src/build/images/hana/R52-8182.67.2017_06_26_1324-a1/hd_vmlinuz.image
+INFO    : Root filesystem hash emitted: /mnt/host/source/src/build/images/hana/R52-8182.67.2017_06_26_1324-a1/rootfs.hash
+INFO    : Kernel image A   size is 6230016 bytes.
+INFO    : Kernel image B   size is 6230016 bytes.
+INFO    : Kernel partition A size is 16777216 bytes.
+INFO    : Kernel partition B size is 16777216 bytes.
+INFO    : Appending rootfs.hash (10113024 bytes) to the root fs
+INFO    : Unmounting image from /mnt/host/source/src/build/images/hana/R52-8182.67.2017_06_26_1324-a1/stateful_dir and /mnt/host/source/src/build/images/hana/R52-8182.67.2017_06_26_1324-a1/rootfs_dir
+Cleaning up /usr/local symlinks for /mnt/host/source/src/build/images/hana/R52-8182.67.2017_06_26_1324-a1/stateful_dir/dev_image
+INFO    : Done. Image(s) created in /mnt/host/source/src/build/images/hana/R52-8182.67.2017_06_26_1324-a1
+
+INFO    : Test image created as chromiumos_test_image.bin
+INFO    : To copy the image to a USB key, use:
+INFO    :   cros flash usb:// ../build/images/hana/R52-8182.67.2017_06_26_1324-a1/chromiumos_test_image.bin
+INFO    : To convert it to a VM image, use:
+INFO    :   ./image_to_vm.sh --from=../build/images/hana/R52-8182.67.2017_06_26_1324-a1 --board=hana --test
+
+INFO    : Elapsed time (build_image): 15m8s
+
+
