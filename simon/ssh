@@ -59,7 +59,7 @@ is_ip_ok() {
 # Function: set the username/password/ip for given args, and ensure the ip is good
 # Usage: $0 <DUT_IP/User>
 remote_host_set() {
-    for IP_SET in $(seq 1 100)
+    for IP_SET in $(seq 1 10)
     do     
 	if [ "$1" == "101.1.2.$IP_SET" ] || [ "$1" == "chrome" ] || [ "$1" == "dut" ]; then
             #connect to chromebook
