@@ -74,6 +74,16 @@
             groups="minilayout"
             name="chromeos/overlays/chipset-skl-private"/> -->
 
+	 <!-- for veryon_jerry -->
+   <!--<project remote="cros-internal"
+            path="src/private-overlays/overlay-veyron-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-veyron-private"/>
+			
+   <project remote="cros-internal"  
+            path="src/private-overlays/overlay-variant-veyron-jerry-private"
+            groups="minilayout"
+            name="chromeos/overlays/overlay-variant-veyron-jerry-private"/> -->
 
 
 </manifest>
