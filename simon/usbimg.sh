@@ -27,7 +27,7 @@ make_Ustick() {
 	set -x
 	pv -preb $1 | sudo dd of=$2 bs=8M iflag=fullblock oflag=dsync || warn Failed
 	echo -e "\033[39;49;0m"
-	sleep 10; sync
+	sync; sleep 20; sync
 	sudo eject -s $2  # eject U-stick
 	set +x
 	info Done 
