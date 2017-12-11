@@ -19,3 +19,9 @@ libreoffice		#open office word
 sudo apt-get install sox libsox-fmt-all
 play <music>
 
+
+untar -JxvC ./ path/to/image.tar.xz
+unzip path/to/image.zip
+
+
+
