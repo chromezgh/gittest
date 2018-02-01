@@ -1,0 +1,6 @@
+ectool forcelidopen 1 # Always backlight on
+backlight_tool --set_brightness_percent=100
+
+
+
+

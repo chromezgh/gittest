@@ -13,7 +13,7 @@ set DUT_IP [lindex $argv 2]
 set cmd [lindex $argv 3]
 set time 10
 
-spawn ssh $user@$DUT_IP "$cmd"
+spawn ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $user@$DUT_IP "$cmd"
 expect "assword:" {send "$password\r"}
 interact
 #expect eof

@@ -23,5 +23,7 @@ play <music>
 untar -JxvC ./ path/to/image.tar.xz
 unzip path/to/image.zip
 
-
+xrandr --output VGA --same-as LVDS --auto #copy
+xrandr --output VGA --same-as LVDS --mode 1024*768 #copy
+xrandr --output VGA --right-of LVDS --auto #right extend
 

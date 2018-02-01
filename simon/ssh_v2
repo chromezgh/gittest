@@ -52,14 +52,14 @@ is_ip_ok() {
     ping -c 1 -w 1 $IP &> /dev/null && result=1 || result=0
     if [ "$result" != "1" ]; then
         info ping $IP failed !!!
-        return 1
+        return 1 && exit
     fi
 }
 
 # Function: set the username/password/ip for given args, and ensure the ip is good
 # Usage: $0 <DUT_IP/User>
 remote_host_set() {
-    for IP_SET in $(seq 1 10)
+    for IP_SET in $(seq 5 10)
     do     
 	if [ "$1" == "101.1.2.$IP_SET" ] || [ "$1" == "chrome" ] || [ "$1" == "dut" ]; then
             #connect to chromebook
@@ -117,11 +117,11 @@ remote_host_set() {
         password="   "
         DUT_IP="192.168.1.79"
 
-		elif [ "$1" == "10.240.16.156" ] || [ "$1" == "bitland83" ]; then
-    #connect to bitland 83 server
+    elif [ "$1" == "10.240.16.140" ] || [ "$1" == "bitland85" ]; then
+    #connect to bitland 85 server 140\37
         user=bitland
         password="hftest"
-        DUT_IP="10.240.16.156"
+        DUT_IP="10.240.16.140"
 
     elif [ "$1" == "-h" ] || [ "$1" == "help" ]; then
         usage_help
@@ -141,7 +141,7 @@ remote_host_set() {
 }
 #remote_host_set $1
 
-fail_message() {
+message() {
     if [ $? == 0 ]; then
         echo $@ =================================== [ok!] 1>&2
     else
@@ -152,44 +152,57 @@ fail_message() {
 
 #command: `ssh $user@$DUT_IP`
 ssh_cmd() {
-		echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
-		ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
+		#echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
+		#ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@<IP_address>
+		#ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
 
-		echo Running command: ssh $user@$DUT_IP
+		if [ -z "$(ssh-keygen -F "$DUT_IP")" ]; then
+  		ssh-keyscan -H $IP >> $PATH_TO_known_hosts
+		fi
+		echo Running command: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $user@$DUT_IP
 		/usr/bin/expect <<-EOF
-		set time 10
-		spawn ssh $user@$DUT_IP
+		set time 1
+
+		spawn ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $user@$DUT_IP
 		expect "yes/no" {send  "yes\r"}
-		expect "assword: " {send "$password\n"}
+		expect "Password: " {send "$password\n"}
 		interact
 		#expect eof
 EOF
-		fail_message ssh $user@$DUT_IP $1
+		message ssh $user@$DUT_IP $1
 }
 
 #command:`scp $host_file $user@$DUT_IP:$dut_dir`
+#scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $host_file $user@$DUT_IP:$dut_dir
 ssh_cp() {
-		echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
-		ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
+		#echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
+		#ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
 
-		echo Running command: scp -r ${host_file} ${user}@${DUT_IP}:${dut_dir}
+		if [ -z "$(ssh-keygen -F "$DUT_IP")" ]; then
+  		ssh-keyscan -H $IP >> $PATH_TO_known_hosts
+		fi
+		echo Running command: scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $host_file $user@$DUT_IP:$dut_dir
 		/usr/bin/expect <<-EOF
 		set time 10
-		spawn scp -r $host_file $user@$DUT_IP:$dut_dir
+		spawn scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $host_file $user@$DUT_IP:$dut_dir
 		expect "yes/no" {send  "yes\r"}
 		expect "assword: " {send "$password\n"}
 		#interact
 		expect eof
 EOF
-		fail_message scp -r ${host_file} ${user}@${DUT_IP}:${dut_dir}
+		message scp -r ${host_file} ${user}@${DUT_IP}:${dut_dir}
 #echo scp -r ${host_file} ${user}@${DUT_IP}:${dut_dir}  [ok!] 
 }
 
 #command:`scp $dut_file $user@$DUT_IP:$host_dir`
+#scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $dut_file $user@$DUT_IP:$host_file
 ssh_fetch() {
-		echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
-		ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
+		#echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
+		#ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
 
+		if [ -z "$(ssh-keygen -F "$DUT_IP")" ]; then
+  		ssh-keyscan -H $IP >> $PATH_TO_known_hosts
+		fi
 		echo Running command: scp -r $user@$DUT_IP:$dut_file $host_dir
 		/usr/bin/expect <<-EOF
 		set time 10
@@ -199,7 +212,7 @@ ssh_fetch() {
 		#interact
 		expect eof
 EOF
-		fail_message scp -r $user@$DUT_IP:$dut_file $host_dir
+		message scp -r $user@$DUT_IP:$dut_file $host_dir
 }
 
 
@@ -210,8 +223,12 @@ ssh_diff() {
     local host_tmp_dir=/tmp
     local dut_diff_local
 
-		echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
-		ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
+		#echo Running command: "ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP"
+		#ssh-keygen -f "$PATH_TO_known_hosts" -R $DUT_IP
+
+		if [ -z "$(ssh-keygen -F "$DUT_IP")" ]; then
+  		ssh-keyscan -H $IP >> $PATH_TO_known_hosts
+		fi
 		echo Running command: scp -r $user@$DUT_IP:$dut_file $host_tmp_dir
 		/usr/bin/expect <<-EOF
 		set time 10
@@ -221,7 +238,7 @@ ssh_diff() {
 		#interact
 		expect eof
 EOF
-		fail_message scp -r $user@$DUT_IP:$dut_file $host_tmp_dir
+		message scp -r $user@$DUT_IP:$dut_file $host_tmp_dir
 		dut_file_name=`echo ${dut_file##*/}` #split the dut_file name
 		dut_diff_local=`echo ${dut_file_name}.log`
 		sudo touch $host_tmp_dir/$dut_diff_local
@@ -231,7 +248,7 @@ EOF
 		diff -iurNB $host_tmp_dir/$dut_file_name $host_file
 		diff -Naur $host_tmp_dir/$dut_file_name $host_file >> $host_tmp_dir/$dut_diff_local
 		echo "**************************************end**********************************" >> $host_tmp_dir/$dut_diff_local
-		fail_message diff -iurNB $host_tmp_dir/$dut_file_name $host_file
+		message diff -iurNB $host_tmp_dir/$dut_file_name $host_file
 }
 
 ssh_sign() {
