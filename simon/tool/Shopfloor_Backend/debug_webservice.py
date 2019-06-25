@@ -1,5 +1,5 @@
 #!/usr/bin/python -u
-# should move this file to /usr/local/factory/py/shopfloor folder to debug
+#
 
 """Utility for accessing web services."""
 
