@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# Chromeos Development Start
+# 1. make chromeos enviroment
+# 2. DHCP/TFTP/Miniomaha
+
+# 3. install Meld/BeyondCompare/Chromeos/Pycharm
+# 4. sudo apt-get install vim expect python2.7 python3.5
+
+info() {
+	echo "[INFO] $* " 1>&2
+}
+
+log() {
+	echo "[DEBUG] $* " 1>&2 
+}
+
+# to repeat a cmd until it's successful to execute
+repeat(){
+	retry=0
+	while [ ${retry} -lt 5 ]
+	do 
+		retry=$(expr $retry + 1)
+		$@ && return
+		log this is the ${retry} retry		
+	done
+}
+
+# auto type password/continue, will exit after entering the remote terminal few seconds
+# Usage: $0 command
+passwd="   "
+#passwd="123"
+auto_type() {	
+	echo "start auto type!"
+	/usr/bin/expect <<-EOF
+		set timeout 10
+		spawn $@
+		expect {
+			"assword: " {send "${passwd}\r"}
+			"yes/no" {send "yes\r"}
+			"\[Y/n\]" {send "Y\r"}
+		}
+		expect {
+			"assword: " {send "${passwd}\r"}
+			"yes/no" {send "yes\r"}
+			"Y/n" {send "Y\r"}
+		}		
+		#interact #can't be used, seems there is bug
+		expect eof
+EOF
+}
+
+repeat auto_type ssh caolei@192.168.1.68
+#repeat auto_type ssh wang:123@192.168.1.6
+	
+#TODO to verify something whether it exist or not
+verify(){
+	log start verify!!!	
+}
+
+#=======================Some useful software=============================================
+
+
+install_chrome() {
+	#1. 下载源加入到系统的源列表
+	sudo wget https://repo.fdzh.org/chrome/google-chrome.list -P /etc/apt/sources.list.d/
+	#2. 导入谷歌软件的公钥，用于下面步骤中对下载软件进行验证
+	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key add -
+	#3. install chrome (maybe need few times)
+	#sudo apt-get update && sudo apt-get install google-chrome-stable
+	repeat sudo apt-get update &&  repeat sudo apt-get install google-chrome-stable
+	#4.  verify your installation has been done
+	/usr/bin/google-chrome-stable
+}
+
+
+#======================DHCP Miniomaha setup==============================================
+
+# ethx=""
+# mac=""
+
+prepare_somepackage() {
+	sudo apt-get update && sudo apt-get install sharutils pigz python-cherrypy3 python-protobuf python-netifaces python-numpy
+	sudo apt-get update && apt-get install python.json python-pip
+	sudo pip install zeep
+	sudo apt-get install python-yaml
+} 
+
+install_dhcp(){
+	# To setup DHCP server
+	#1. open some port and config the firewall
+	sudo iptables -I INPUT -p tcp --dport 8080:8084 -j ACCEPT
+	sudo iptables -I INPUT -p udp --dport 69 -j ACCEPT 
+	#2. install dhcp server
+	sudo apt-get install isc-dhcp-server
+	#3. config the static IP (use ifconfig to get $ethx)
+	sudo vim /etc/network/interfaces
+
+	auto $ethx 
+	allow-hotplug $ethx 
+	iface $ethx inet static 
+	address 101.1.2.4 
+	netmask 255.255.255.0
+
+	#4. config the dhcp server interface
+	sudo vim  /etc/default/isc-dhcp-server
+	#5. config the IP range from DHCP server
+	sudo vim /etc/dhcp/dhcpd.conf
+
+	subnet 101.1.2.0 netmask 255.255.255.0 { 
+	range 101.1.2.5 101.1.2.10; 
+	option subnet-mask 255.255.255.0; 
+	# filename "vmlinux.bin"; 
+	option routers 101.1.2.1; 
+	next-server 101.1.2.4; 
+	} 
+	host mydhcp { 
+	hardware ethernet $mac;        #(物理地址替换为你查到的)
+	fixed-address 101.1.2.4; 
+	} 
+	#6. restart the DHCP server (maybe need a reboot)
+	sudo /etc/init.d/isc-dhcp-server restart
+}
+
+correct_dhcp_config(){
+	echo ""
+
+}
+
+#==============================================================================
+

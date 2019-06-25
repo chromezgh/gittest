@@ -1,0 +1,105 @@
+#!/bin/bash
+# TODO -Simon- status: [on-going]
+# build the environment within one cmd
+
+# you may need to upload your CL 
+# Solution1: config your gitcookies
+# git config --global user.email "commiter email"
+# git config --global user.name "commiter name"
+# config the gitcoolies,update the passwd
+# firefox --new-window https://www.googlesource.com/new-password
+# cat ~/.gitcookies 
+
+# Solution2: config the ~/.netrc file
+# if you plan to make changes to public code,no sure weather it need or not [?]
+# content as below:
+# machine chromium.googlesource.com login username password password
+# machine chromium-review.googlesource.com login username password password
+
+# more info: please refer to the link
+# http://www.chromium.org/chromium-os/quick-start-guide
+#	https://sites.google.com/a/google.com/chromeos-partners/pages/tech-docs/getting-started/getting-access-to-source-code
+
+#	please input the board name
+BOARD=hana
+
+#which directory the source repo will put 
+SOURCE_REPO=$HOME/master
+
+config_email() {
+	git config --global user.email "guohui.zhou@bitland.corp-partner.google.com"
+	git config --global user.name "Guohui Zhou"
+	# config the gitcoolies,update the passwd
+	#[Important] firefox --new-window https://www.googlesource.com/new-password
+}
+
+repeat_cmd() {
+for time in $(seq 1 5)
+	do
+		#TODO -Simon- how to improve the print info
+		echo "[INFO] this is $time time run command: \"$1\" "
+		$1
+	done
+}
+
+#1. install git and tools
+install_git() {
+	sudo apt-get install git-core gitk git-gui subversion curl lvm2 thin-provisioning-tools python-pkg-resources python-virtualenv python-oauth2client
+}
+
+#2. install depot_tools in order to use 'repo sync' command
+install_depot_tools() {
+	git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	#add depot_tools to $PATH
+	export PATH=$HOME/depot_tools:"$PATH"
+	#add PATH to .bashrc
+	#echo "export PATH=\`pwd\`/depot_tools:\"\$PATH\"" >> ~/.bashrc
+	echo "export PATH=\$HOME/depot_tools:\"\$PATH\"" >> ~/.bashrc
+}
+
+#3. tweak sudoers configuration,for using 'cros_sdk' command
+cros_sdk_config() { 
+	cd /tmp
+	cat > ./sudo_editor <<EOF
+	#!/bin/sh
+	echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells
+	echo Defaults timestamp_timeout=180 >> \$1 # Time between re-requesting your password, in minutes
+EOF
+	chmod +x ./sudo_editor
+	sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
+}
+
+#4. get the source
+get_source() {
+	mkdir -p $SOURCE_REPO
+	cd ${SOURCE_REPO}
+	config_email
+	repo init -u https://chromium.googlesource.com/chromiumos/manifest.git
+	#repo init -u https://chromium.googlesource.com/chromiumos/manifest.git -b factory-coral-10122.B  --repo-url https://chromium.googlesource.com/external/repo.git
+	#repo init -u https://chromium.googlesource.com/chromiumos/manifest.git -b firmware-veyron-6588.B  --repo-url https://chromium.googlesource.com/external/repo.git
+	#[Important] Optional: Make any changes to .repo/local_manifests/local_manifest.xml before syncing	
+	repo sync
+}
+
+#5. build chromium OS,make sure you are within the source tree before running these commands
+# export BOARD=amd64-generic
+build_package() {
+	#cros_sdk -- sudo echo "ACCEPT_LICENSE=\"*\"" >> /etc/make.conf.user  #TODO -Simon- (doesn't work,need do it manually)
+	#cros_sdk -- ./setup_board --board=${BOARD}
+	cros_sdk -- ./build_packages --board=${BOARD}
+}
+
+#6. build image <test/factory install/dev/base>
+build_image() {
+	cros_sdk -- ./build_image --board=${BOARD}
+}
+
+# copy this image onto a usb drive.  Insert the usb stick you’d like to use and run:
+# cros_sdk -- cros flash --board=${BOARD} usb://
+
+main() {
+	repeat_cmd "build_package"
+	#repeat_cmd "build_image"	
+}
+
+main "$@"

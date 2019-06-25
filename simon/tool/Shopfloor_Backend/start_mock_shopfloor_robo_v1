@@ -1,0 +1,124 @@
+#!/bin/sh
+# 2017/12/15
+# for N24(Robo/Robo360/Coral) only
+
+# should add the shopfloor_service.py in shopfloor folder if you want to start mock shopfloor server 
+# achieve function to start real factory server in one script
+# Function: for easy work
+# Usage:    ./start_mock_shopfloor         #to start mock factory server
+#						./start_mock_shopfloor factory #to start real factory			 
+
+### ------ For Bitland PE --------- ###
+# 1. setup miniomaha server (in ./setup folder)
+# ./make_factory_package.sh --board coral --release_image xxx.bin --test_image xxx.bin --toolkit xxx.run --firmware xxx --hwid xxx.sh --complete_script xxx.sh
+		
+# 2. start miniomaha server (in ./setup folder)
+# ./miniomaha.py --port 8080
+
+# 3. start factory server (in ./shopfloor folder)
+# 	2nd floor command to start factory server 
+# 		$current_dir/factory_server -m http://101.1.2.4:8080/static/coral.json -s json:http://10.240.0.20:8081/TestWebService/Service1.asmx?wsdl -p 9100
+# 	1st floor command to start factory server
+# 		$current_dir/factory_server -m http://101.1.2.4:8080/static/coral.json -s json:http://192.168.250.20:8081/TestWebService/Service1.asmx?wsdl -p 9100
+
+### -----UPDATE component if needed-------### (in ./setup folder)
+# update toolkit: ./cros_payload add static/coral.json toolkit xxx.run
+# update hwid: ./cros_payload add static/coral.json hwid xxx.sh
+# update firmware: ./cros_payload add static/coral.json firmware xxx
+# update test_image: ./cros_payload add static/coral.json test_image xxx.bin
+# update release_image: ./cros_payload add static/coral.json release_image xxx.bin
+
+### -----others-------  ###
+# make diskimg for preflash through copy machine (in chroot)
+# ./make_factory_package.sh --board coral --release_image xxx.bin --test_image xxx.bin --toolkit xxx.run --hwid xxx.sh --diskimg xxx.bin --serctors xxx
+
+# make usbimg for preflash through U-stick (in ./setup folder)
+#./make_factory_package.sh --board coral --release_image xxx.bin --test_image xxx.bin --toolkit xxx.run --hwid xxx.sh --firmware xxx --factory_shim xxx.bin --usbimg xxx.bin
+
+# pv -preb <image> | sudo dd of=/dev/sdx bs=8M iflag=fullblock oflag=dsync
+
+Miniomaha_port="8080"
+Shopfloor_serverice_port="8090"
+DUT_port="9100"
+current_dir=`pwd`
+
+if [ ! -z "$2" ]; then
+	if [ "$2" = "100e" ]; then
+		Miniomaha_port="8050"
+		DUT_port="9400"
+		echo "[DEBUG] start 100e server -Miniomaha_port(8050) DUT_port(9400) !!!"
+	elif [ "$2" = "500e" ]; then
+		Miniomaha_port="8070"
+		DUT_port="9300"
+		echo "[DEBUG] start 500e server -Miniomaha_port(8070) DUT_port(9300) !!!"
+	else 
+		echo "[ERROR] $2 should be 100e/500e_ss"\
+		&& exit 0
+	fi
+fi
+
+msg() {
+	echo "                      "
+	echo "-------Start $1-------"
+}
+
+echo "In directory: $current_dir"
+release_port() {
+	if [ -n "$(lsof -i:$1 | awk '{print $2}' | tail -1)" ]; then
+		kill -9 $(lsof -i:$1 | awk '{print $2}' | tail -1) && sleep 0.5
+	fi
+}
+
+release_port $Miniomaha_port
+release_port $Shopfloor_serverice_port
+release_port $DUT_port
+
+#start shopfloor service, if in real factory, no need
+if [ "$1" != "factory" ]; then
+	if [ -x "$current_dir/shopfloor_service.py" ]; then
+		msg Shopfloor_service
+		echo "[Running Command]: $current_dir/shopfloor_service.py"
+		$current_dir/shopfloor_service.py -p $Shopfloor_serverice_port &
+		sleep 3
+	else 
+		echo "[ERROR]: missing $current_dir/shopfloor_service.py" && exit 0
+	fi
+fi
+
+#start miniomaha server
+if [ -x "${current_dir%/*}/setup/miniomaha.py" ]; then
+	msg Miniomaha_server
+	echo "[Running Command]: ${current_dir%/*}/setup/miniomaha.py"
+	${current_dir%/*}/setup/miniomaha.py --port $Miniomaha_port &
+	sleep 3
+else 
+	echo "[ERROR]: missing ${current_dir%/*}/setup/miniomaha.py" && exit 0
+fi
+
+#start factory server 
+if [ -x "$current_dir/factory_server" ]; then
+	msg factory_server
+	echo "[Running Command]: $current_dir/factory_server"
+	if [ "$1" = "factory" ]; then
+		$current_dir/factory_server	-m http://101.1.2.4:$Miniomaha_port/static/coral.json \
+		-s json:http://doa.bitland.com.cn:8001/Service1.asmx?wsdl -p $DUT_port &
+		#-s json:http://10.240.0.20:8081/TestWebService/Service1.asmx?wsdl -p $DUT_port &
+	else
+		$current_dir/factory_server -m http://101.1.2.4:$Miniomaha_port/static/coral.json \
+		-s http://101.1.2.4:$Shopfloor_serverice_port -p $DUT_port &
+	fi
+	sleep 1
+	echo "      "
+	wait
+else 
+	echo "[ERROR]: missing $current_dir/factory_server" && exit 0
+fi
+
+
+#for jerry
+#./shopfloor_server -m cros.factory.shopfloor.jerry_shopfloor 
+#
+
+# gooftool -v 4 finalize --no_write_protect --shopfloor_url "http://101.1.2.4:9100" --upload_method "shopfloor:http://101.1.2.4:9100#P201CJ23" --add_file "/var/factory/log/test_states" --phase "DVT"
+
+

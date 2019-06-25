@@ -1,0 +1,61 @@
+#!/bin/bash
+# Copyright 2016 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Starts a mock shopfloor (including the mock backend and the
+# shopfloor frontend).  This works either from the bundle or an
+# overlay constructed in the chroot.
+#
+# To run this from the chroot:
+#
+#   make overlay-hana && overlay-hana/bin/start_mock_shopfloor
+
+root="$(dirname "$(realpath "$0")")"
+#cd $root
+#echo "generate soft link to factory.par if factory.par updated"
+#ln -sf factory.par manage
+#ln -sf factory.par shopfloor
+#ln -sf factory.par hana_mock_shopfloor_backend
+#ln -sf factory.par minijack
+#ln -sf factory.par shopfloor_server
+export HANA_SHOPFLOOR_BACKEND=/tmp/hana-shopfloor-backend
+
+release_port() {
+	if [ -n "$(lsof -i:$1 | awk '{print $2}' | tail -1)" ]; then
+		 kill -9 $(lsof -i:$1 | awk '{print $2}' | tail -1) && sleep 0.5
+	fi
+ if [ -n "$(ps | grep rsync | awk '{print $1}' | tail -1)" ]; then
+   kill -9 $(ps | grep rsync | awk '{print $1}' | tail -1) && sleep 0.5
+ fi
+}
+
+function cleanup() {
+  pkill -f 'shopfloor_server -m cros.factory.shopfloor.hana_shopfloor' && \
+    sleep 0.5
+  pkill -f 'hana_mock_shopfloor_backend --server-path' && sleep 0.5
+  release_port 8115
+  rm -rf $HANA_SHOPFLOOR_BACKEND && sleep 0.5 && sync
+}
+
+trap "cleanup" SIGINT SIGKILL SIGTERM
+cleanup
+
+set -ex
+cd $root
+if [ -e $root/factory.par ]; then
+  # Running from a bundle
+  bin=$root
+  data_dir=$root/shopfloor_data
+else
+  # Running from the source tree
+  bin=$root/../bin
+  data_dir=$root/../bundle/shopfloor/shopfloor_data
+fi
+
+rm -rf $HANA_SHOPFLOOR_BACKEND
+$bin/hana_mock_shopfloor_backend \
+  --server-path $HANA_SHOPFLOOR_BACKEND \
+  $data_dir/mlbs.csv "$@" &
+$bin/shopfloor_server -m cros.factory.shopfloor.hana_shopfloor -p 8115 &
+wait
