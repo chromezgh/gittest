@@ -1,0 +1,85 @@
+#!/bin/bash
+#2018-01-08 v1
+# 1. create hwid bundle 2. update hwid bundle
+# 3. merge all hwid into one
+
+# for [1]
+# if you want to create a new hwid, please build your HWID database first.
+#hwid probe -j LASER14 --phase EVT --output-file /tmp/LASER14.yaml
+#hwid build-database -j LASER14 --image-id EVT --probed-results-file /tmp/LASER14.yaml -p /usr/local/factory/hwid
+
+# for [2]
+#cd /usr/local/factory
+#hwid probe -j PHASER360 --phase DVT --output-file /tmp/phaser360.yaml
+#hwid update-database -j PHASER360 --image-id DVT -p /usr/local/factory/hwid/  --probed-results-file /tmp/phaser360.yaml 
+#hwid generate --phase DVT --no-verify-checksum
+
+# for [3]
+# get a HWDI bundle then run following command
+# $: sed -i 's/'\'PHASER360\''/'\'PHASER360_0418\''/g' Phaser360_0418.sh
+# PROJECT=`echo $(mosys platform model) | tr 'a-z' 'A-Z'`
+# SKU=`echo $(mosys platform sku)`
+# if [ "${SKU}" = "5" ]
+# then ln -sf $TARGET_BASE_LIVE/$TARGET_NAME/PHASER360_0418 $PROJECT
+# else ln -sf $TARGET_BASE_LIVE/$TARGET_NAME/PHASER360_0416 $PROJECT
+# fi
+
+# NOTE: if you want to change phase, just go.
+PHASE=$(factory phase)
+#PHASE="DVT"
+IMAGE_ID="DVT_LASER"
+PROJECT=`echo $(mosys platform model) | tr 'a-z' 'A-Z'`
+
+Usage(){
+  echo "Usage: $0 <PROJECT>  eg: $PHASE PROJECT should in PHASER|PHASER360|LASER14"
+}
+
+good(){
+  echo -e "\033[1;32;25mGood:$* \033[0m" 1>&2
+}
+
+die(){
+  echo -e "\033[1;31;25mError:$* \033[0m" 1>&2
+  sleep 0.1
+  exit 1
+}
+
+_do(){
+  echo -e "Running command: $@"
+  $@ || ( die execute failed: $@ )
+}
+
+if [ -z "$PHASE" ]; then
+  Usage
+  exit 0
+fi
+
+if [ "$PROJECT" == "PHASER360" ] || [ "$1" == "phaser360" ] || [ "$1" == "PHASER360" ]; then
+  PROJECT="PHASER360"
+elif [ "$PROJECT" == "PHASER" ] || [ "$1" == "phaser" ] || [ "$1" == "PHASER" ]; then
+  PROJECT="PHASER"
+elif [ "$PROJECT" == "LASER14" ] || [ "$1" == "laser14" ] || [ "$1" == "LASER14" ]; then
+  PROJECT="LASER14"
+else
+  echo project=${PROJECT} Right?   phase=${PHASE} Right?
+  Usage
+  exit 0 
+fi
+
+cd /usr/local/factory
+hwid probe -j $PROJECT --phase $PHASE --output-file /tmp/$PROJECT.yaml && good 1. HWID probe successful!
+
+if [ -s "/usr/local/factory/hwid/$PROJECT" ]; then
+  (_do hwid update-database -j $PROJECT --image-id $IMAGE_ID -p /usr/local/factory/hwid/  --probed-results-file /tmp/$PROJECT.yaml --no-verify-checksum) \
+  && good 2. HWID update-database successful!
+
+  (_do hwid generate --phase $PHASE --no-verify-checksum) \
+  && good 3. hwid string generate successful! 
+  echo project=${PROJECT}  phase=${PHASE} Right?
+else
+  die Seems hwid database is not exist on DUT!
+fi
+
+
+
+
