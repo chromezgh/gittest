@@ -1,0 +1,183 @@
+#!/bin/sh
+# Version: 2018-12-26
+# Run in chroot
+
+# By suzy-Q cable
+#sudo flashrom -p raiden_debug_spi:target=AP -w $image -V
+#sudo flashrom -p raiden_debug_spi:target=EC -w $image -V
+
+# Start servod service
+#sudo servod -b octopus_npcx &
+#sudo pkill -x servod
+
+#TODO N23
+# flash PD
+#dut-control spi1_vref:pp3300 usbpd_boot_mode:on ec_boot_mode:on cold_reset:on sleep:0.1 cold_reset:of
+#sudo /usr/bin/flash_ec --board=oak_pd --image=$filename
+#dut-control spi1_vref:off usbpd_boot_mode:off ec_boot_mode:off cold_reset:on sleep:0.1 cold_reset:off
+# flash ec
+#dut-control spi1_vref:pp3300 usbpd_boot_mode:on ec_boot_mode:on cold_reset:on sleep:0.1 cold_reset:off
+#sudo /usr/bin/flash_ec --board=oak --image=$filename
+#dut-control spi1_vref:off  usbpd_boot_mode:off ec_boot_mode:off cold_reset:on sleep:0.1 cold_reset:off
+# flash bios
+#dut-control spi2_vref:pp1800 spi2_buf_en:on spi2_buf_on_flex_en:on spi_hold:off
+#sudo /usr/sbin/flashrom -V -p ft2232_spi:type=servo-v2 -w $filename
+#dut-control spi2_buf_en:off spi2_buf_on_flex_en:off spi2_vref:off
+
+# N24
+#~/trunk/src/platform/ec/util/flash_ec --board=coral --image ../../firmware/10068.71.dev/ec.bin
+#dut-control spi2_buf_en:on spi2_buf_on_flex_en:on spi2_vref:pp3300 cold_reset:on
+#sudo flashrom -V -p ft2232_spi:type=servo-v2 -w ../../firmware/10068.71.dev/image-coral.dev.bin
+#dut-control spi1_vref:pp3300 usbpd_boot_mode:on ec_boot_mode:on cold_reset:on sleep:0.1 cold_reset:off
+
+# N25
+#~/trunk/src/platform/ec/util/flash_ec --board=phaser --image=$filename
+#dut-control spi2_buf_en:on spi2_buf_on_flex_en:on spi2_vref:pp1800 cold_reset:on
+#sudo flashrom -V -p ft2232_spi:type=servo-v2 -w $filename
+#dut-control spi2_buf_en:on spi2_buf_on_flex_en:on spi2_vref:pp1800 cold_reset:off
+
+# capture fw log
+#dut-control ec_uart_pty
+#dut-control cpu_uart_pty
+#sudo minicom -D /dev/pts/x
+
+#following command fixed the "flashromPartiaWrite() error"
+#flashrom -p host --wp-range 0x0 0x0
+
+START_TIME=$(date +%s)
+END_TIME=""
+
+good(){
+  echo -e "\033[1;32;25mGood:$* \033[0m" 1>&2
+}
+
+die(){
+  echo -e "\033[1;31;25mError:$* \033[0m" 1>&2
+  sleep 0.1
+  exit 1
+}
+
+usage_help(){
+  echo "Usage: $0
+    -b | --board <hana| oak| octopus| coral> #can start servod service only
+    -p | --programmer <ec |host>
+    -w | --write <filename.bin>
+    -h | --help  "
+}
+
+start_servod_service(){
+  BOARD=$1
+  if [ -z "$BOARD" ]; then
+    die "$BOARD should be <hana/octopus/oak/coral>"
+  fi
+  sudo pkill servod && sleep 1
+  sudo servod -b ${BOARD}_npcx & 
+  sleep 4
+  ps -fe | grep servod | grep -v grep
+  if [ $? == 0 ]; then
+    ec_uart_port=$(dut-control ec_uart_pty)
+    cpu_uart_port=$(dut-control cpu_uart_pty)
+    cr50_uart_port=$(dut-control cr50_uart_pty)
+    ec3po_usbpd_uart_port=$(dut-control ec3po_usbpd_uart_pty)
+    good Uart port: [$ec_uart_port]  [$cpu_uart_port]  [$cr50_uart_port] #[$ec3po_usbpd_uart_port]
+    interval=`expr $(date +%s) - ${START_TIME}`
+    good Servod service start successfully...     Elapsed time: ${interval}s   
+  else
+    die Servod service start failed!
+  fi
+
+}
+
+flash_ec(){
+  BOARD=$1
+  IMAGE=$2
+  if [ -z $IMAGE ]; then
+    die if file exists, '$IMAGE' should be 'filename.bin'
+  fi
+  if [ "$BOARD" == "octopus" ]; then
+    BOARD="phaser"
+  fi
+  ~/trunk/src/platform/ec/util/flash_ec --board=$BOARD --image=$IMAGE
+  if [ $? == 0 ]; then
+    interval=`expr $(date +%s) - ${START_TIME}`
+    good $IMAGE flash successfully!      Elapsed time: ${interval}s
+  else
+    die $IMAGE flash failed!
+  fi
+}
+
+flash_bios(){
+  IMAGE=$1
+  if [ -z $IMAGE ]; then
+    die if file exists, '$IMAGE' should be 'filename.bin'
+  fi
+  dut-control spi2_buf_en:on spi2_buf_on_flex_en:on spi2_vref:pp1800 cold_reset:on && sleep 2
+  sudo flashrom -V -p ft2232_spi:type=servo-v2 -w $IMAGE
+  if [ $? == 0 ]; then
+    interval=`expr $(date +%s) - ${START_TIME}`
+    good $IMAGE flash successfully!       Elapsed time: ${interval}s
+  else
+    die $IMAGE flash failed!
+  fi
+  dut-control spi2_buf_en:on spi2_buf_on_flex_en:on spi2_vref:pp1800 cold_reset:off && sleep 2
+}
+
+main(){
+  BOARD=""
+  FLASHCHIP=""
+  IMAGE=""
+  if [ -z "$1" ]; then
+    usage_help
+    exit 0
+  fi
+  while [ $# -gt 0 ]; do
+    opt="$1"
+    case "${opt}" in
+      -b | --board )
+        BOARD=$2
+        case "$BOARD" in
+          octopus | hana | coral | oak )
+           ;;
+          * )
+            die Board${BOARD} not found!
+            ;;
+	      esac	
+        shift 2
+        ;;
+      -p | --programmer )
+        FLASHCHIP=$2
+        if [ "$FLASHCHIP" != "ec" ] && [ "$FLASHCHIP" != "host" ]; then
+          die '$FLASHCHIP' should either be 'ec' or 'host'
+        fi
+        shift 2
+        ;;
+      -w | --write )
+        IMAGE=$2
+        if [ ! -e ${IMAGE} ] || [ ${IMAGE##*.} != "bin" ]; then
+          die if file exists, '$IMAGE' should be 'filename.bin'
+        fi
+        shift 2
+        ;;
+      -h | help | --help )
+        usage_help
+        exit 0
+        ;;
+      * )
+        usage_help
+        die "Unknown option: $opt"
+        ;;
+    esac
+  done
+echo [DEBUG]: On $BOARD: flashrom -p $FLASHCHIP -w $IMAGE 
+
+start_servod_service $BOARD
+if [ "$FLASHCHIP" == "ec" ]; then
+  flash_ec $BOARD $IMAGE
+elif [ "$FLASHCHIP" == "host" ]; then
+  flash_bios $IMAGE
+fi
+}
+
+main $@
+
+
